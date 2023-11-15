@@ -1,0 +1,70 @@
+.Navbar .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff !important;
+    border-bottom: 1px solid #E5EAF2;
+}
+
+.Navbar .lang {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.Navbar button {
+    border: none;
+    background: transparent;
+}
+
+.Navbar .navbarSearch {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 7px;
+    border: 1px solid rgb(218, 226, 237);
+    border-radius: 10px;
+    background-color: rgb(243, 246, 249);
+    box-shadow: rgb(229, 234, 242) 0px 1px 1px inset, rgba(229, 234, 242, 0.6) 0px 1px 0.5px;
+}
+
+.Navbar .navbarSearch:hover {
+    background-color: rgb(229, 234, 242);
+    border-color: rgb(199, 208, 221);
+}
+
+.Navbar .searchKey {
+    background-color: white;
+    border: 1px solid rgb(218, 226, 237);
+    border-radius: 10px;
+    padding: 0px 5px;
+}
+
+.Navbar .navIcons {
+    display: flex;
+    gap: 10px;
+}
+
+.Navbar .navIcons button {
+    padding: 7px 7px;
+    border: 1px solid rgb(218, 226, 237);
+    border-radius: 12px;
+}
+
+.Navbar .navIcons button:hover {
+    background-color: rgb(229, 234, 242);
+}
+
+.Navbar .bi {
+    color: #007FFF;
+}
+
+.Navbar .bi::before {
+    display: flex;
+    font-size: 1.2rem;
+}
+
+.modal {
+    background-color: rgba(107, 122, 144, 0.2);
+    backdrop-filter: blur(2px) brightness(200%);
+}
