@@ -5,11 +5,18 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
 
+import coject from '../../assets/favicon.ico'
+
 import './Navbar.css'
 
 const Navbar = () => {
     const { t } = useTranslation();
     const [Language, setLanguage] = useState(localStorage.LANG || "ar");
+    const [showSidebar, setShowSidebar] = useState(false);
+
+    const toggleSidebar = () => {
+        setShowSidebar(!showSidebar);
+    };
 
     const LanguageHandling = () => {
         if (Language === 'ar') {
@@ -34,10 +41,10 @@ const Navbar = () => {
     return (
         <React.Fragment>
             <div className="Navbar">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="#">Navbar</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,6 +70,8 @@ const Navbar = () => {
                                     <a className="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
                                 </li>
                             </ul>
+                        </div> */}
+                        <div className="navOptions">
                             <div className='lang mx-2' onClick={LanguageHandling}>
                                 <div><i className="bi bi-translate"></i></div>
                                 <div>{localStorage.getItem('LANG') === 'ar' ? 'Arabic' : 'English'}</div>
@@ -73,40 +82,50 @@ const Navbar = () => {
                                     <div><span>{t("Search")}...</span></div>
                                     <div className='searchKey'><span>Ctrl+K</span></div>
                                 </button>
-                                {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                             </form>
-                        </div>
-                        <div className='navIcons'>
-                            <button>
-                                <i className="bi bi-github"></i>
-                            </button>
-                            <button>
-                                <i className="bi bi-bell"></i>
-                            </button>
-                            <button>
-                                <i className="bi bi-gear"></i>
-                            </button>
+                            <div className='navIcons'>
+                                <button type="button">
+                                    <i className="bi bi-github"></i>
+                                </button>
+                                <button type="button">
+                                    <i className="bi bi-bell"></i>
+                                </button>
+                                <button type="button" onClick={toggleSidebar}>
+                                    <i className="bi bi-gear"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </nav>
-
-            </div>
-            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            ...
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <div><i className="bi bi-search"></i></div>
+                                <input type="search" name="" id="" placeholder='Search...' />
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                ...
+                            </div>
+                            <div className="modal-footer">
+                                <div className="search"><span>Search by</span></div>
+                                <div className="cojectLogo"><img src={coject} alt="Coject" /></div>
+                                <div className="cojectSlogan"><span>Coject</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <aside className={`${showSidebar ? 'show-sidebar sidebar' : 'sidebar'}`}>
+                    <div className="side-inner">
+                        <div className="settings">
+                            <div><span>Setting</span></div>
+                            <button type="button" onClick={toggleSidebar}>
+                                <i className="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </React.Fragment>
     )

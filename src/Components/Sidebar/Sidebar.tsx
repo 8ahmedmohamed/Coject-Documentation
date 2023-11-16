@@ -3,12 +3,8 @@ import React from 'react'
 const Sidebar = () => {
     return (
         <React.Fragment>
-            <div className="flex-shrink-0 p-3 bg-white" style={{ width: "280px" }}>
-                <a href="/" className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                    <svg className="bi me-2" width="30" height="24"></svg>
-                    <span className="fs-5 fw-semibold">Collapsible</span>
-                </a>
-                <ul className="list-unstyled ps-0">
+            <div className="flex-shrink-0 p-2 bg-white" style={{ width: "280px",marginTop:"56px" }}>
+                <ul className="list-unstyled px-0">
                     <li className="mb-1">
                         <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
                             Home
