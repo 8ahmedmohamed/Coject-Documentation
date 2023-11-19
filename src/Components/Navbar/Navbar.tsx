@@ -11,7 +11,8 @@ import './Navbar.css'
 
 const Navbar = () => {
     const { t } = useTranslation();
-    const [Language, setLanguage] = useState(localStorage.LANG || "ar");
+    const [language, setLanguage] = useState(localStorage.LANG || "ar");
+    const [direction, setDirection] = useState('left');
     const [showSidebar, setShowSidebar] = useState(false);
 
     const toggleSidebar = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
     };
 
     const LanguageHandling = () => {
-        if (Language === 'ar') {
+        if (language === 'ar') {
             setLanguage('en')
             localStorage.LANG = 'en';
         } else {
@@ -32,45 +33,98 @@ const Navbar = () => {
         if (!localStorage.LANG) {
             localStorage.LANG = "ar";
         }
+        setDirection(localStorage.LANG == "en" ? 'left' : 'right');
         const htmlRoot = document.querySelector("html") as HTMLElement;
-        htmlRoot.setAttribute("dir", Language === "en" ? "ltr" : "rtl");
-        htmlRoot.setAttribute("lang", Language === "en" ? "en" : "ar");
-        i18next.changeLanguage(Language).then();
-    }, [Language]);
+        htmlRoot.setAttribute("dir", language === "en" ? "ltr" : "rtl");
+        htmlRoot.setAttribute("lang", language === "en" ? "en" : "ar");
+        i18next.changeLanguage(language).then();
+    }, [language]);
+
+    const ChangeDirection = (dir: string) => {
+        setDirection(dir);
+        const htmlRoot = document.querySelector("html") as HTMLElement;
+        htmlRoot.setAttribute("dir", dir === "left" ? "ltr" : "rtl");
+        LanguageHandling();
+    }
 
     return (
         <React.Fragment>
             <div className="Navbar">
                 <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">Navbar</a>
-                        {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Link</a>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="#">Action</a></li>
-                                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
-                                </li>
-                            </ul>
-                        </div> */}
+                        <div className='d-flex'>
+                            <div className="logo">
+                                {/* <a className="navbar-brand" href="#">Navbar</a> */}
+                                <img src={coject} alt="Coject" />
+                            </div>
+                            <div className="versions d-none d-md-block">
+                                <p>Coject Documention</p>
+                                <div className="d-flex">
+                                    <div className='dropdown'>
+                                        <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Material UI
+                                            <i className="bi bi-caret-down-fill"></i>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li>
+                                                <h5>Title 1</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h5>Title 2</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h5>Title 3</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className='dropdown'>
+                                        <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            v5.14.18
+                                            <i className="bi bi-caret-down-fill"></i>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li>
+                                                <h5>Title 1</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h5>Title 2</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                            <hr />
+                                            <li>
+                                                <h5>Title 3</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div className="navOptions">
                             <div className='lang mx-2' onClick={LanguageHandling}>
                                 <div><i className="bi bi-translate"></i></div>
@@ -79,17 +133,44 @@ const Navbar = () => {
                             <form className="d-flex">
                                 <button className="navbarSearch mx-2" type='button' data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <div><i className="bi bi-search"></i></div>
-                                    <div><span>{t("Search")}...</span></div>
-                                    <div className='searchKey'><span>Ctrl+K</span></div>
+                                    <div className='d-none d-md-block'><span>{t("Search")}...</span></div>
+                                    <div className='searchKey d-none d-md-block'><span>Ctrl+K</span></div>
                                 </button>
                             </form>
                             <div className='navIcons'>
-                                <button type="button">
+                                <a type="button" href='https://github.com/8ahmedmohamed/Coject-Documentation'>
                                     <i className="bi bi-github"></i>
-                                </button>
-                                <button type="button">
-                                    <i className="bi bi-bell"></i>
-                                </button>
+                                </a>
+                                <div className='dropdown'>
+                                    <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i className="bi bi-bell"></i>
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <h5>Title 1</h5>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                            </p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h5>Title 2</h5>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                            </p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h5>Title 3</h5>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <button type="button" onClick={toggleSidebar}>
                                     <i className="bi bi-gear"></i>
                                 </button>
@@ -117,12 +198,25 @@ const Navbar = () => {
                     </div>
                 </div>
                 <aside className={`${showSidebar ? 'show-sidebar sidebar' : 'sidebar'}`}>
-                    <div className="side-inner">
+                    <div className={`side-inner ${direction == 'left' ? 'rightSideBar' : 'leftSideBar'}`}>
                         <div className="settings">
-                            <div><span>Setting</span></div>
+                            <div><span>Settings</span></div>
                             <button type="button" onClick={toggleSidebar}>
                                 <i className="bi bi-x-lg"></i>
                             </button>
+                        </div>
+                        <div className="content">
+                            <h6>DIRECTION</h6>
+                            <div className="language">
+                                <button className={`${direction == 'left' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
+                                    <i className="bi bi-arrow-return-right"></i>
+                                    <span>{t('Left to Right')}</span>
+                                </button>
+                                <button className={`${direction === 'right' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
+                                    <i className="bi bi-arrow-return-left"></i>
+                                    <span>{t('Right to Left')}</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </aside>
