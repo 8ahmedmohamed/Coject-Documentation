@@ -1,0 +1,296 @@
+button:focus-visible {
+    outline: none;
+}
+
+.Sidemenu .sidemenuDiscreption {
+    border-bottom: 1px solid #E5EAF2;
+}
+
+.Sidemenu .sideInner {
+    width: 310px;
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+
+.Sidemenu .sideInner.leftSidemenu {
+    border-right: 1px solid #E5EAF2;
+}
+
+.Sidemenu .sideInner.rightSidemenu {
+    border-left: 1px solid #E5EAF2;
+}
+
+.Sidemenu .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sidemenu .logo img {
+    width: 30px;
+}
+
+.Sidemenu .versions>p {
+    color: #6B7A90;
+    margin-left: 8px;
+    margin-bottom: 0;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08rem;
+}
+
+.Sidemenu .versions .dropdown {
+    padding: 0px 10px;
+}
+
+.Sidemenu .versions .navButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #007FFF;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.Sidemenu .versions .navButtons .bi {
+    position: absolute;
+    right: -6px;
+    top: 8px;
+    transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.Sidemenu .versions .navButtons:hover .bi {
+    right: -10px;
+}
+
+.Sidemenu .versions .bi::before {
+    display: flex;
+    font-size: 0.5rem;
+}
+
+.navButtons {
+    border: none;
+    background: transparent;
+    text-decoration: none;
+}
+
+.Sidemenu .versions .navButtons::after {
+    content: none;
+}
+
+.Sidemenu .versions .dropdown-menu {
+    display: block;
+    visibility: hidden;
+    width: 200px;
+    padding: 8px 0px;
+    border-radius: 12px;
+    overflow-y: auto;
+    opacity: 0;
+    z-index: -5;
+    /* transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+        visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1); */
+}
+
+.Sidemenu .versions .dropdown-menu.show {
+    opacity: 1;
+    z-index: 1002;
+    visibility: visible;
+}
+
+.Sidemenu .versions .dropdown-menu li {
+    padding: 8px 16px;
+}
+
+.Sidemenu .versions .dropdown-menu hr {
+    margin: 2px;
+}
+
+.Sidemenu .bi {
+    color: #007FFF;
+}
+
+.Sidemenu .bi::before {
+    display: flex;
+    font-size: 1.2rem;
+}
+
+.Sidemenu .sideBarList {
+    padding: 8px 10px 0px 10px;
+}
+
+.Sidemenu .listButton {
+    display: flex;
+    width: 100%;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    position: relative;
+}
+
+.Sidemenu .listButton:hover {
+    background-color: #F3F6F9;
+}
+
+.Sidemenu .listButton::before {
+    content: ">";
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #007FFF;
+    position: absolute;
+}
+
+.Sidemenu .listButton[aria-expanded="false"]::before {
+    transform: rotate(0deg);
+}
+
+.Sidemenu .listButton[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+    top: 6px;
+}
+
+.Sidemenu .listTitle {
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.Sidemenu .listContent {
+    transition: 0.5s all ease-in-out;
+}
+
+.Sidemenu .listSubTitle {
+    display: flex;
+    width: 100%;
+    padding: 4px 0px 4px 36px;
+    margin-top: 8px;
+    border-radius: 6px;
+    color: #6B7A90;
+    font-size: 0.6875rem;
+    letter-spacing: .08rem;
+    position: relative;
+}
+
+.Sidemenu .listSubTitle::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 9.5px;
+    height: 68%;
+    top: 12px;
+    width: 1px;
+    opacity: 1;
+    background-color: #E5EAF2;
+}
+
+.Sidemenu .listSubTitle::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 5;
+    left: 6.4px;
+    height: 8px;
+    width: 8px;
+    border-radius: 2px;
+    opacity: 1;
+    background-color: rgba(243, 246, 249, 0.5);
+    border: 1px solid;
+    border-color: #DAE2ED;
+}
+
+.Sidemenu .listItems {
+    display: flex;
+    width: 100%;
+    padding: 4px 0px 4px 36px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #434D5B;
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+.Sidemenu .listItems:hover {
+    background-color: #F3F6F9;
+}
+
+.Sidemenu .listItems::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 9.5px;
+    top: 0;
+    height: 29px;
+    width: 1px;
+    opacity: 1;
+    background-color: #E5EAF2;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+    .Sidemenu {
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+
+    .Sidemenu .sideInner {
+        position: fixed;
+        height: 100vh;
+        z-index: 1001;
+        opacity: 0;
+        padding-top: 15px;
+        background-color: #fff;
+        transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .Sidemenu .sideInner.rightSidemenu {
+        right: 0;
+        transform: translateX(100%);
+    }
+
+    .Sidemenu .sideInner.leftSidemenu {
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    .Sidemenu.showSidemenu {
+        width: 100%;
+        height: 100vh;
+        z-index: 1001;
+        backdrop-filter: brightness(60%);
+        background-color: rgba(107, 122, 144, 0.2);
+    }
+
+    .Sidemenu.showSidemenu .sideInner {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    .Sidemenu .leftLogo {
+        padding-right: 12px;
+        margin-right: 4px;
+        margin-left: 10px;
+        border-right: 1px solid #E5EAF2;
+    }
+
+    .Sidemenu .rightLogo {
+        padding-left: 12px;
+        margin-left: 4px;
+        margin-right: 10px;
+        border-left: 1px solid #E5EAF2;
+    }
+}
+
+@media (min-width: 768px) {
+    .Sidemenu .sideInner {
+        height: calc(100vh - 62px);
+        margin-top: 62px;
+    }
+}

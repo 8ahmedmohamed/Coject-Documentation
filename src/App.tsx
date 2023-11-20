@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
-import Sidebar from "./Components/Sidebar/Sidebar";
+import Container from "./Components/Container/Container";
 
 function App() {
   return (
     <React.Fragment>
-      <Navbar />
-      <Sidebar/>
+      <Container/>
     </React.Fragment>
   );
 }

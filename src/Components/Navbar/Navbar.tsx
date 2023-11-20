@@ -9,10 +9,16 @@ import coject from '../../assets/favicon.ico'
 
 import './Navbar.css'
 
-const Navbar = () => {
+interface Props {
+    toggleSideMenu: boolean,
+    setToggleSideMenu(toggleSideMenu: boolean): void,
+    direction: string,
+    setDirection(direction: string): void
+}
+
+const Navbar = (props: Props) => {
     const { t } = useTranslation();
     const [language, setLanguage] = useState(localStorage.LANG || "ar");
-    const [direction, setDirection] = useState('left');
     const [showSidebar, setShowSidebar] = useState(false);
 
     const toggleSidebar = () => {
@@ -33,15 +39,15 @@ const Navbar = () => {
         if (!localStorage.LANG) {
             localStorage.LANG = "ar";
         }
-        setDirection(localStorage.LANG == "en" ? 'left' : 'right');
+        props.setDirection(localStorage.LANG == "en" ? 'left' : 'right');
         const htmlRoot = document.querySelector("html") as HTMLElement;
         htmlRoot.setAttribute("dir", language === "en" ? "ltr" : "rtl");
         htmlRoot.setAttribute("lang", language === "en" ? "en" : "ar");
         i18next.changeLanguage(language).then();
-    }, [language]);
+    }, [language, props]);
 
     const ChangeDirection = (dir: string) => {
-        setDirection(dir);
+        props.setDirection(dir);
         const htmlRoot = document.querySelector("html") as HTMLElement;
         htmlRoot.setAttribute("dir", dir === "left" ? "ltr" : "rtl");
         LanguageHandling();
@@ -53,15 +59,19 @@ const Navbar = () => {
                 <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
                         <div className='d-flex'>
-                            <div className="logo">
-                                {/* <a className="navbar-brand" href="#">Navbar</a> */}
+                            <div className="burgerMenu d-block d-md-none">
+                                <button className="navButtons" type="button" onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>
+                                    <i className="bi bi-list"></i>
+                                </button>
+                            </div>
+                            <div className={`logo ${props.direction == 'left' ? 'leftLogo' : 'rightLogo'}`}>
                                 <img src={coject} alt="Coject" />
                             </div>
                             <div className="versions d-none d-md-block">
                                 <p>Coject Documention</p>
                                 <div className="d-flex">
                                     <div className='dropdown'>
-                                        <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Material UI
                                             <i className="bi bi-caret-down-fill"></i>
                                         </button>
@@ -92,7 +102,7 @@ const Navbar = () => {
                                         </ul>
                                     </div>
                                     <div className='dropdown'>
-                                        <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             v5.14.18
                                             <i className="bi bi-caret-down-fill"></i>
                                         </button>
@@ -138,11 +148,11 @@ const Navbar = () => {
                                 </button>
                             </form>
                             <div className='navIcons'>
-                                <a type="button" href='https://github.com/8ahmedmohamed/Coject-Documentation'>
+                                <a className="navButtons" href='https://github.com/8ahmedmohamed/Coject-Documentation'>
                                     <i className="bi bi-github"></i>
                                 </a>
                                 <div className='dropdown'>
-                                    <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i className="bi bi-bell"></i>
                                     </button>
                                     <ul className="dropdown-menu">
@@ -171,7 +181,7 @@ const Navbar = () => {
                                         </li>
                                     </ul>
                                 </div>
-                                <button type="button" onClick={toggleSidebar}>
+                                <button className="navButtons" type="button" onClick={toggleSidebar}>
                                     <i className="bi bi-gear"></i>
                                 </button>
                             </div>
@@ -184,7 +194,7 @@ const Navbar = () => {
                             <div className="modal-header">
                                 <div><i className="bi bi-search"></i></div>
                                 <input type="search" name="" id="" placeholder='Search...' />
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button className="navButtons btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
                                 ...
@@ -197,22 +207,23 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <aside className={`${showSidebar ? 'show-sidebar sidebar' : 'sidebar'}`}>
-                    <div className={`side-inner ${direction == 'left' ? 'rightSideBar' : 'leftSideBar'}`}>
+                <aside className={`${showSidebar ? 'showSidebarContainer' : ''}`} onClick={toggleSidebar}/>
+                <aside className={`${showSidebar ? 'showSidebar sidebar' : 'sidebar'}`}>
+                    <div className={`sideInner ${props.direction == 'left' ? 'rightSideBar' : 'leftSideBar'}`}>
                         <div className="settings">
                             <div><span>Settings</span></div>
-                            <button type="button" onClick={toggleSidebar}>
+                            <button className="navButtons" type="button" onClick={toggleSidebar}>
                                 <i className="bi bi-x-lg"></i>
                             </button>
                         </div>
                         <div className="content">
                             <h6>DIRECTION</h6>
-                            <div className="language">
-                                <button className={`${direction == 'left' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
+                            <div className="direction">
+                                <button className={`navButtons ${props.direction == 'left' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
                                     <i className="bi bi-arrow-return-right"></i>
                                     <span>{t('Left to Right')}</span>
                                 </button>
-                                <button className={`${direction === 'right' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
+                                <button className={`navButtons ${props.direction === 'right' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
                                     <i className="bi bi-arrow-return-left"></i>
                                     <span>{t('Right to Left')}</span>
                                 </button>
