@@ -2,22 +2,23 @@ button:focus-visible {
     outline: none;
 }
 
-.Sidemenu .sidemenuDiscreption {
-    border-bottom: 1px solid #E5EAF2;
-}
-
 .Sidemenu .sideInner {
     width: 310px;
     overflow-y: auto;
-    padding-bottom: 40px;
+    overflow-x: hidden;
+    padding: 5px 0px 40px;
 }
 
-.Sidemenu .sideInner.leftSidemenu {
+.Sidemenu.dirLeft .sideInner {
     border-right: 1px solid #E5EAF2;
 }
 
-.Sidemenu .sideInner.rightSidemenu {
+.Sidemenu.dirRight .sideInner {
     border-left: 1px solid #E5EAF2;
+}
+
+.Sidemenu .sidemenuDiscreption {
+    border-bottom: 1px solid #E5EAF2;
 }
 
 .Sidemenu .logo {
@@ -89,15 +90,25 @@ button:focus-visible {
     overflow-y: auto;
     opacity: 0;
     z-index: -5;
-    /* transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
         opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1),
-        visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1); */
+        visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.Sidemenu.dirLeft .versions .dropdown-menu {
+    transform: translate(-20px, -20px);
+}
+
+.Sidemenu.dirRight .versions .dropdown-menu {
+    transform: translate(20px, -20px);
+    right: 0;
 }
 
 .Sidemenu .versions .dropdown-menu.show {
     opacity: 1;
     z-index: 1002;
     visibility: visible;
+    transform: translate(-120px, 20px) !important;
 }
 
 .Sidemenu .versions .dropdown-menu li {
@@ -115,6 +126,10 @@ button:focus-visible {
 .Sidemenu .bi::before {
     display: flex;
     font-size: 1.2rem;
+}
+
+.Sidemenu .list-unstyled {
+    padding: 0;
 }
 
 .Sidemenu .sideBarList {
@@ -151,13 +166,27 @@ button:focus-visible {
 }
 
 .Sidemenu .listButton[aria-expanded="true"]::before {
-    transform: rotate(90deg);
     top: 6px;
 }
 
+.Sidemenu.dirLeft .listButton[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+}
+
+.Sidemenu.dirRight .listButton[aria-expanded="true"]::before {
+    transform: rotate(270deg);
+}
+
 .Sidemenu .listTitle {
-    margin-left: 15px;
     font-weight: 500;
+}
+
+.Sidemenu.dirLeft .listTitle {
+    margin-left: 15px;
+}
+
+.Sidemenu.dirRight .listTitle {
+    margin-right: 15px;
 }
 
 .Sidemenu .listContent {
@@ -167,7 +196,6 @@ button:focus-visible {
 .Sidemenu .listSubTitle {
     display: flex;
     width: 100%;
-    padding: 4px 0px 4px 36px;
     margin-top: 8px;
     border-radius: 6px;
     color: #6B7A90;
@@ -181,7 +209,6 @@ button:focus-visible {
     display: block;
     position: absolute;
     z-index: 1;
-    left: 9.5px;
     height: 68%;
     top: 12px;
     width: 1px;
@@ -194,7 +221,6 @@ button:focus-visible {
     display: block;
     position: absolute;
     z-index: 5;
-    left: 6.4px;
     height: 8px;
     width: 8px;
     border-radius: 2px;
@@ -204,16 +230,33 @@ button:focus-visible {
     border-color: #DAE2ED;
 }
 
+.Sidemenu.dirLeft .listSubTitle::after {
+    left: 6.4px;
+}
+
+.Sidemenu.dirRight .listSubTitle::after {
+    right: 6.4px;
+}
+
 .Sidemenu .listItems {
     display: flex;
     width: 100%;
-    padding: 4px 0px 4px 36px;
     border-radius: 6px;
     font-size: 0.875rem;
     color: #434D5B;
     position: relative;
     border: none;
     background-color: transparent;
+}
+
+.Sidemenu.dirLeft .listSubTitle,
+.Sidemenu.dirLeft .listItems {
+    padding: 4px 0px 4px 36px;
+}
+
+.Sidemenu.dirRight .listSubTitle,
+.Sidemenu.dirRight .listItems {
+    padding: 4px 36px 4px 0px;
 }
 
 .Sidemenu .listItems:hover {
@@ -225,7 +268,6 @@ button:focus-visible {
     display: block;
     position: absolute;
     z-index: 1;
-    left: 9.5px;
     top: 0;
     height: 29px;
     width: 1px;
@@ -233,34 +275,20 @@ button:focus-visible {
     background-color: #E5EAF2;
 }
 
+.Sidemenu.dirLeft .listSubTitle::before,
+.Sidemenu.dirLeft .listItems::before {
+    left: 9.5px;
+}
+
+.Sidemenu.dirRight .listSubTitle::before,
+.Sidemenu.dirRight .listItems::before {
+    right: 9.5px;
+}
+
 @media (min-width: 0px) and (max-width: 767px) {
-    .Sidemenu {
+    .showSidemenuContainer {
         position: fixed;
-        right: 0;
         top: 0;
-    }
-
-    .Sidemenu .sideInner {
-        position: fixed;
-        height: 100vh;
-        z-index: 1001;
-        opacity: 0;
-        padding-top: 15px;
-        background-color: #fff;
-        transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .Sidemenu .sideInner.rightSidemenu {
-        right: 0;
-        transform: translateX(100%);
-    }
-
-    .Sidemenu .sideInner.leftSidemenu {
-        left: 0;
-        transform: translateX(-100%);
-    }
-
-    .Sidemenu.showSidemenu {
         width: 100%;
         height: 100vh;
         z-index: 1001;
@@ -268,19 +296,45 @@ button:focus-visible {
         background-color: rgba(107, 122, 144, 0.2);
     }
 
+    .Sidemenu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 1002;
+    }
+
+    .Sidemenu .sideInner {
+        position: fixed;
+        height: 100vh;
+        opacity: 0;
+        padding-top: 15px;
+        background-color: #fff;
+        transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .Sidemenu.dirLeft .sideInner {
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    .Sidemenu.dirRight .sideInner {
+        right: 0;
+        transform: translateX(100%);
+    }
+
     .Sidemenu.showSidemenu .sideInner {
         transform: translateX(0%);
         opacity: 1;
     }
 
-    .Sidemenu .leftLogo {
+    .Sidemenu.dirLeft .logo {
         padding-right: 12px;
         margin-right: 4px;
         margin-left: 10px;
         border-right: 1px solid #E5EAF2;
     }
 
-    .Sidemenu .rightLogo {
+    .Sidemenu.dirRight .logo {
         padding-left: 12px;
         margin-left: 4px;
         margin-right: 10px;

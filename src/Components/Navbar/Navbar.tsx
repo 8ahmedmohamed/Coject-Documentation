@@ -20,42 +20,32 @@ const Navbar = (props: Props) => {
     const { t } = useTranslation();
     const [language, setLanguage] = useState(localStorage.LANG || "ar");
     const [showSidebar, setShowSidebar] = useState(false);
-
-    const toggleSidebar = () => {
-        setShowSidebar(!showSidebar);
-    };
+    const htmlRoot = document.querySelector("html") as HTMLElement;
 
     const LanguageHandling = () => {
-        if (language === 'ar') {
-            setLanguage('en')
-            localStorage.LANG = 'en';
-        } else {
-            setLanguage('ar');
-            localStorage.LANG = 'ar';
-        }
+        setLanguage(language === 'ar' ? 'en' : 'ar')
+        localStorage.LANG = language === 'ar' ? 'en' : 'ar';
     };
 
     useEffect(() => {
-        if (!localStorage.LANG) {
-            localStorage.LANG = "ar";
-        }
         props.setDirection(localStorage.LANG == "en" ? 'left' : 'right');
-        const htmlRoot = document.querySelector("html") as HTMLElement;
         htmlRoot.setAttribute("dir", language === "en" ? "ltr" : "rtl");
         htmlRoot.setAttribute("lang", language === "en" ? "en" : "ar");
         i18next.changeLanguage(language).then();
-    }, [language, props]);
+    }, [htmlRoot, language, props]);
 
     const ChangeDirection = (dir: string) => {
         props.setDirection(dir);
-        const htmlRoot = document.querySelector("html") as HTMLElement;
-        htmlRoot.setAttribute("dir", dir === "left" ? "ltr" : "rtl");
-        LanguageHandling();
+        localStorage.LANG = dir === 'left' ? 'en' : 'ar';
     }
+
+    useEffect(() => {
+        htmlRoot.setAttribute("dir", props.direction === "left" ? "ltr" : "rtl");
+    }, [htmlRoot, props]);
 
     return (
         <React.Fragment>
-            <div className="Navbar">
+            <div className={`Navbar ${props.direction == 'left' ? 'dirLeft' : 'dirRight'}`}>
                 <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
                         <div className='d-flex'>
@@ -64,7 +54,7 @@ const Navbar = (props: Props) => {
                                     <i className="bi bi-list"></i>
                                 </button>
                             </div>
-                            <div className={`logo ${props.direction == 'left' ? 'leftLogo' : 'rightLogo'}`}>
+                            <div className="logo">
                                 <img src={coject} alt="Coject" />
                             </div>
                             <div className="versions d-none d-md-block">
@@ -181,7 +171,7 @@ const Navbar = (props: Props) => {
                                         </li>
                                     </ul>
                                 </div>
-                                <button className="navButtons" type="button" onClick={toggleSidebar}>
+                                <button className="navButtons" type="button" onClick={() => { setShowSidebar(!showSidebar); }}>
                                     <i className="bi bi-gear"></i>
                                 </button>
                             </div>
@@ -193,7 +183,7 @@ const Navbar = (props: Props) => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div><i className="bi bi-search"></i></div>
-                                <input type="search" name="" id="" placeholder='Search...' />
+                                <input type="search" name="" id="" placeholder='Search...' autoFocus/>
                                 <button className="navButtons btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
@@ -207,12 +197,12 @@ const Navbar = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <aside className={`${showSidebar ? 'showSidebarContainer' : ''}`} onClick={toggleSidebar}/>
-                <aside className={`${showSidebar ? 'showSidebar sidebar' : 'sidebar'}`}>
-                    <div className={`sideInner ${props.direction == 'left' ? 'rightSideBar' : 'leftSideBar'}`}>
+                <aside className={`${showSidebar ? 'showSidebarContainer' : ''}`} onClick={() => { setShowSidebar(!showSidebar); }} />
+                <div className={`sidebar ${showSidebar ? 'showSidebar' : ''}`}>
+                    <div className="sideInner">
                         <div className="settings">
                             <div><span>Settings</span></div>
-                            <button className="navButtons" type="button" onClick={toggleSidebar}>
+                            <button className="navButtons" type="button" onClick={() => { setShowSidebar(!showSidebar); }}>
                                 <i className="bi bi-x-lg"></i>
                             </button>
                         </div>
@@ -230,7 +220,7 @@ const Navbar = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                </aside>
+                </div>
             </div>
         </React.Fragment>
     )

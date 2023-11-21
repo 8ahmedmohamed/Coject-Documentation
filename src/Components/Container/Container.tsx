@@ -9,7 +9,7 @@ const Container = () => {
     return (
         <React.Fragment>
             <Navbar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} setDirection={setDirection} />
-            <Sidebar toggleSideMenu={toggleSideMenu} direction={direction} />
+            <Sidebar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} />
         </React.Fragment>
     )
 }
