@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Services/Translations/Translation.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>,
+  </React.Fragment>,
 )

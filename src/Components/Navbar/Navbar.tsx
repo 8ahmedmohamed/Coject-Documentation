@@ -18,8 +18,8 @@ interface Props {
 
 const Navbar = (props: Props) => {
     const { t } = useTranslation();
-    const [language, setLanguage] = useState(localStorage.LANG || "ar");
-    const [showSidebar, setShowSidebar] = useState(false);
+    const [language, setLanguage] = useState<string>(localStorage.LANG || "ar");
+    const [showSidebar, setShowSidebar] = useState<boolean>(false);
     const htmlRoot = document.querySelector("html") as HTMLElement;
 
     const LanguageHandling = () => {
@@ -42,6 +42,37 @@ const Navbar = (props: Props) => {
     useEffect(() => {
         htmlRoot.setAttribute("dir", props.direction === "left" ? "ltr" : "rtl");
     }, [htmlRoot, props]);
+
+    useEffect(() => {
+        const modal = document.getElementById('exampleModal');
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.ctrlKey && event.key === 'k') {
+                event.preventDefault()
+                modal?.classList.add('show')
+                modal?.setAttribute("role", "dialog")
+                modal?.setAttribute("aria-modal", "true")
+                modal?.removeAttribute('aria-hidden')
+            }
+        };
+
+        const handleKeyUp = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                modal?.classList.remove('show')
+                modal?.removeAttribute("role")
+                modal?.removeAttribute("aria-modal")
+                modal?.setAttribute('aria-hidden', 'true')
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
 
     return (
         <React.Fragment>
@@ -178,12 +209,12 @@ const Navbar = (props: Props) => {
                         </div>
                     </div>
                 </nav>
-                <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ display: 'none' }}>
                     <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div><i className="bi bi-search"></i></div>
-                                <input type="search" name="" id="" placeholder='Search...' autoFocus/>
+                                <input type="search" name="" id="" placeholder='Search...' autoFocus />
                                 <button className="navButtons btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
