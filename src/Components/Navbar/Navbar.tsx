@@ -83,9 +83,9 @@ const Navbar = (props: Props) => {
         else if (data.name.toLowerCase().includes(searchData.toLowerCase()) || data.country.toLowerCase().includes(searchData.toLowerCase())) {
             return data
         }
-    }).map(data => {
+    }).map((data, index) => {
         return (
-            <div>
+            <div key={index}>
                 <ul>
                     <li>
                         <span style={{ paddingRight: '10px' }}>{data.name}</span>
