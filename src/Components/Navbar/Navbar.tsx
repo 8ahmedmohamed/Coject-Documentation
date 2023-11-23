@@ -7,6 +7,8 @@ import i18next from 'i18next';
 
 import coject from '../../assets/favicon.ico'
 
+import StaticData from '../../Services/StaticData/StaticData.json';
+
 import './Navbar.css'
 
 interface Props {
@@ -20,6 +22,7 @@ const Navbar = (props: Props) => {
     const { t } = useTranslation();
     const [language, setLanguage] = useState<string>(localStorage.LANG || "ar");
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
+    const [searchData, setSearchData] = useState<string>('');
     const htmlRoot = document.querySelector("html") as HTMLElement;
 
     const LanguageHandling = () => {
@@ -73,6 +76,30 @@ const Navbar = (props: Props) => {
             window.removeEventListener('keyup', handleKeyUp);
         };
     }, []);
+
+    const items = StaticData.filter((data) => {
+        if (searchData == null)
+            return data
+        else if (data.name.toLowerCase().includes(searchData.toLowerCase()) || data.country.toLowerCase().includes(searchData.toLowerCase())) {
+            return data
+        }
+    }).map(data => {
+        return (
+            <div>
+                <ul>
+                    <li>
+                        <span style={{ paddingRight: '10px' }}>{data.name}</span>
+                        <span style={{ paddingRight: '10px' }}>{data.age}</span>
+                        <span style={{ paddingRight: '10px' }}>{data.country}</span>
+                    </li>
+                </ul>
+            </div>
+        )
+    })
+
+    const SearchFilter: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        setSearchData(e.currentTarget.value)
+    }
 
     return (
         <React.Fragment>
@@ -214,11 +241,11 @@ const Navbar = (props: Props) => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div><i className="bi bi-search"></i></div>
-                                <input type="search" name="" id="" placeholder='Search...' autoFocus />
+                                <input type="search" placeholder='Search...' autoFocus onChange={(e) => { SearchFilter(e) }} />
                                 <button className="navButtons btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                ...
+                                {items}
                             </div>
                             <div className="modal-footer">
                                 <div className="search"><span>Search by</span></div>
