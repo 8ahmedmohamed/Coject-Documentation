@@ -55,7 +55,7 @@ button {
 }
 
 .Navbar .versions .navButtons:hover .bi {
-    right: -10px;
+    right: -8px;
 }
 
 .Navbar .versions .bi::before {
@@ -181,7 +181,7 @@ button {
 
 .Navbar .modal {
     background-color: rgba(107, 122, 144, 0.2);
-    backdrop-filter: blur(2px) brightness(200%);
+    /* backdrop-filter: blur(2px) brightness(200%); */
 }
 
 .Navbar .modal.show {
