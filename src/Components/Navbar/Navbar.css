@@ -270,6 +270,7 @@ button {
     padding: 20px 0;
     opacity: 0;
     background-color: #fff;
+    width: 360px;
     transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -347,7 +348,11 @@ button {
     border-left: 1px solid transparent;
 }
 
-@media (min-width: 0px) and (max-width:767px) {
+@media (min-width: 0px) and (max-width:1024px) {
+    .Navbar .burgerMenu {
+        display: block;
+    }
+
     .Navbar.dirLeft .logo {
         margin-left: 10px;
     }
@@ -355,25 +360,23 @@ button {
     .Navbar.dirRight .logo {
         margin-right: 10px;
     }
-}
 
-@media (min-width: 0px) {
+    .Navbar .versions,
+    .Navbar .searchPlaceHolder,
+    .Navbar .searchKey {
+        display: none;
+    }
+
     .Navbar .navbarSearch {
         padding: 7px 7px;
     }
-
-    .Navbar .sidebar .sideInner {
-        width: 300px;
-    }
 }
 
-@media (min-width: 600px) {
-    .Navbar .sidebar .sideInner {
-        width: 360px;
+@media (min-width: 1025px) {
+    .Navbar .burgerMenu {
+        display: none;
     }
-}
 
-@media (min-width: 768px) {
     .Navbar.dirLeft .logo {
         padding-right: 12px;
         margin-right: 4px;
@@ -384,6 +387,12 @@ button {
         padding-left: 12px;
         margin-left: 4px;
         border-left: 1px solid #E5EAF2;
+    }
+
+    .Navbar .versions,
+    .Navbar .searchPlaceHolder,
+    .Navbar .searchKey {
+        display: block;
     }
 
     .Navbar .navbarSearch {

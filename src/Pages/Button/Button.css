@@ -1,0 +1,170 @@
+.Button a {
+    text-decoration: none;
+}
+
+.Button .bi {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+}
+
+.Button #basic-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Button #basic-button:hover .anchorLink {
+    visibility: visible;
+}
+
+.Button .anchorLink {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    height: fit-content;
+    border: 1px solid #e5eaf2;
+    border-radius: 8px;
+    color: #434d5b;
+    background-color: #f0f7ff;
+    visibility: hidden;
+}
+
+.Button .anchorLink:hover {
+    border: 1px solid #c2e0ff;
+    color: #007fff;
+    background-color: rgba(194, 224, 255, 0.4);
+}
+
+.Button .anchorLink .bi-link::before {
+    font-size: 1rem;
+    font-weight: 600 !important;
+}
+
+.Button .codeSample {
+    margin-bottom: 500px;
+}
+
+.Button .preview {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    border: 1px solid #E5EAF2;
+    border-radius: 12px 12px 0 0;
+    padding: 24px;
+}
+
+.Button .optionsContainer {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #E5EAF2;
+    border-top: none;
+    padding: 4px 8px;
+}
+
+.Button .optionsContainer .codeTypes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Button .optionsContainer .hideCodeTypes {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.Button .optionsContainer .showCodeTypes {
+    opacity: 1;
+    visibility: visible;
+}
+
+.Button .codeTypes .jsCode,
+.Button .codeTypes .tsCode {
+    display: flex;
+    height: fit-content;
+    border: 1px solid #E5EAF2;
+    padding: 1px 9px;
+    border-radius: 15px;
+    font-size: 0.8125rem;
+}
+
+.Button .codeTypes .jsCode:hover,
+.Button .codeTypes .tsCode:hover {
+    background-color: rgb(240, 243, 248);
+}
+
+.Button .codeTypes .jsCode.selected,
+.Button .codeTypes .tsCode.selected {
+    border-color: #007FFF;
+    background-color: rgba(0, 127, 255, 0.08);
+    color: #007FFF;
+}
+
+.Button .codeTypes .jsCode.selected:hover,
+.Button .codeTypes .tsCode.selected:hover {
+    background-color: rgb(194, 224, 255);
+}
+
+.Button .options {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Button .options .collapsingCode {
+    padding: 3px 8px 5px;
+    border-radius: 999px;
+    border: 1px solid rgba(194, 224, 255, 0.6);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgb(0, 127, 255);
+}
+
+.Button .options .collapsingCode:hover {
+    background-color: rgb(240, 247, 255);
+    border-color: rgb(153, 204, 243);
+}
+
+.Button .options .copyToClipboard {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.Button .options .copyToClipboard:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.Button .editor .margin {
+    display: none;
+}
+
+.Button .editor .monaco-editor-background {
+    background-color: black;
+}
+
+.Button .editor .monaco-scrollable-element {
+    left: 0;
+}
+
+.Button .editor .minimap.slider-mouseover {
+    display: none;
+}
+
+.Button .editor .mtk1 {
+    color: #fff;
+}
+
+@media (min-width: 0px) and (max-width: 1024px) {
+    .Button {
+        width: 100%;
+        padding: 40px 40px 0px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .Button {
+        width: calc(100% - 300px);
+        padding: 40px 100px 0px;
+        margin-left: auto;
+    }
+}

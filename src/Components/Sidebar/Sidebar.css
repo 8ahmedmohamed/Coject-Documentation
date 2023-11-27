@@ -289,7 +289,7 @@ button:focus-visible {
     right: 9.5px;
 }
 
-@media (min-width: 0px) and (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 1024px) {
     .showSidemenuContainer {
         position: fixed;
         top: 0;
@@ -331,6 +331,10 @@ button:focus-visible {
         opacity: 1;
     }
 
+    .Sidemenu .sidemenuDiscreption {
+        display: flex;
+    }
+
     .Sidemenu.dirLeft .logo {
         padding-right: 12px;
         margin-right: 4px;
@@ -346,11 +350,19 @@ button:focus-visible {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
+    .Sidemenu {
+        position: fixed;
+        left: 0;
+    }
+
     .Sidemenu .sideInner {
         height: calc(100vh - 62px);
-        margin-top: 62px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    .Sidemenu .sidemenuDiscreption {
+        display: none;
     }
 }

@@ -107,7 +107,7 @@ const Navbar = (props: Props) => {
                 <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
                         <div className='d-flex'>
-                            <div className="burgerMenu d-block d-md-none">
+                            <div className="burgerMenu">
                                 <button className="navButtons" type="button" onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>
                                     <i className="bi bi-list"></i>
                                 </button>
@@ -115,7 +115,7 @@ const Navbar = (props: Props) => {
                             <div className="logo">
                                 <img src={coject} alt="Coject" />
                             </div>
-                            <div className="versions d-none d-md-block">
+                            <div className="versions">
                                 <p>Coject Documention</p>
                                 <div className="d-flex">
                                     <div className='dropdown'>
@@ -191,8 +191,8 @@ const Navbar = (props: Props) => {
                             <form className="d-flex">
                                 <button className="navbarSearch mx-2" type='button' data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <div><i className="bi bi-search"></i></div>
-                                    <div className='d-none d-md-block'><span>{t("Search")}...</span></div>
-                                    <div className='searchKey d-none d-md-block'><span>Ctrl+K</span></div>
+                                    <div className='searchPlaceHolder'><span>{t("Search")}...</span></div>
+                                    <div className='searchKey'><span>Ctrl+K</span></div>
                                 </button>
                             </form>
                             <div className='navIcons'>

@@ -13,10 +13,12 @@ interface Props {
 const Sidebar = (props: Props) => {
     return (
         <React.Fragment>
-            <div className={`${props.toggleSideMenu ? 'showSidemenuContainer' : ''}`} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }} />
+            {props.toggleSideMenu &&
+                <div className="showSidemenuContainer" onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }} />
+            }
             <div className={`Sidemenu ${props.toggleSideMenu ? 'showSidemenu' : ''} ${props.direction == 'left' ? 'dirLeft' : 'dirRight'}`}>
                 <div className="sideInner">
-                    <div className='sidemenuDiscreption d-flex d-md-none pb-2'>
+                    <div className='sidemenuDiscreption pb-2'>
                         <div className="logo">
                             <img src={coject} alt="Coject" />
                         </div>

@@ -1,0 +1,15 @@
+.scrollToTop {
+    border-radius: 50% !important;
+    background-color: #C2E0FF !important;
+    color: #007FFF;
+}
+
+.scrollToTop:hover {
+    background-color: #99CCF3 !important;
+}
+
+.scrollToTop .bi-caret-up-fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
