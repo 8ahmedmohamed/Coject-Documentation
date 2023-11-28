@@ -190,6 +190,7 @@
     padding: 8px;
     border-radius: 6px;
     color: #FFF;
+    z-index: 9999;
 }
 
 .Button.dirLeft .codeEditor .copyCodeToClipboard {
@@ -208,24 +209,24 @@
     background-color: transparent !important;
 }
 
-.Button .editor .margin {
-    display: none;
+.Button .editor {
+    pointer-events: none;
 }
 
-.Button .editor .monaco-editor-background {
+.Button .editor .monaco-editor,
+.Button .editor .monaco-editor-background,
+.Button .editor .view-line {
     background-color: black;
 }
 
+.Button .editor .margin,
+.Button .editor .minimap.slider-mouseover,
+.Button .editor .decorationsOverviewRuler {
+    display: none !important;
+}
+
 .Button .editor .monaco-scrollable-element {
-    left: 0;
-}
-
-.Button .editor .minimap.slider-mouseover {
-    display: none;
-}
-
-.Button .editor .mtk1 {
-    color: #fff;
+    left: 0 !important;
 }
 
 @media (min-width: 0px) and (max-width: 1024px) {
@@ -240,9 +241,11 @@
         width: calc(100% - 300px);
         padding: 40px 100px 0px;
     }
+
     .Button.dirLeft {
         margin-left: auto;
     }
+
     .Button.dirRight {
         margin-right: auto;
     }

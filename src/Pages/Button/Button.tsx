@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Tooltip } from 'react-tooltip'
 
-// import Editor from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 
 import './Button.css'
 
@@ -95,38 +95,16 @@ const Button = (props: Props) => {
                         </div>
                     </div>
                     <div className='codeEditor'>
-                        {expandCode ?
-                            <div className='expandedCode'>
-                                {`import * as React from 'react';`}<br />
-                                {`import Stack from '@mui/material/Stack';`}<br />
-                                {`import Button from '@mui/material/Button';`}<br />
-                                {`export default function BasicButtons() {`}<br />
-                                {`return (`}<br />
-                                {`<Stack spacing={2} direction="row">`}<br />
-                                {`<Button variant="text">Text</Button>`}<br />
-                                {`<Button variant="contained">Contained</Button>`}<br />
-                                {`<Button variant="outlined">Outlined</Button>`}<br />
-                                {`</Stack>`}<br />
-                                {`);`}<br />
-                                {`}`}
-                            </div> :
-                            <div id='collapsedCode' className='collapsedCode'>
-                                {`<button>Text</button>`}
-                                <br />
-                                {`<button className='btn btn-primary'>Contained</button>`}
-                                <br />
-                                {`<button className='btn btn-outline-primary'>Outlined</button>`}
-                            </div>
-                        }
                         <button data-tooltip-id="copyCodeToClipboard-tooltip" className='copyCodeToClipboard' onClick={() => copyDivToClipboard('collapsedCode')}>
                             {copyStatus ? <i className="bi bi-clipboard2-check" /> : <i className="bi bi-clipboard2" />}
                         </button>
                         <Tooltip id='copyCodeToClipboard-tooltip' place='left' content="(or Ctrl + C)" />
-                        {/*<Editor className='editor'
+                        <Editor className='editor'
                             height="150px"
-                            defaultLanguage="javascript"
+                            theme="vs-dark"
+                            defaultLanguage="html"
                             defaultValue="// some comment"
-                        />*/}
+                        />
                     </div>
                 </div>
 
@@ -138,11 +116,6 @@ const Button = (props: Props) => {
                     <a href="">Text buttons</a> are typically used for less-pronounced actions, including those located: in dialogs, in cards. In cards,
                     text buttons help maintain an emphasis on card content.
                 </p>
-
-                <input onChange={(e) => setCopyToClipboard(e.target.value)} />
-                <CopyToClipboard text={copyToClipboard} onCopy={() => { setCopyStatus(true) }}>
-                    <button>{copyStatus ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}</button>
-                </CopyToClipboard>
 
                 <div className='codeSample mt-4'>
                     <div className='preview'>
