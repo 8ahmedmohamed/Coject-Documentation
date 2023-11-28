@@ -16,7 +16,7 @@ const Container = () => {
             <Navbar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} setDirection={setDirection} />
             <div className="d-flex" style={{ marginTop: '62px' }}>
                 <Sidebar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} />
-                <Button />
+                <Button direction={direction}/>
             </div>
             <ScrollToTop smooth className="scrollToTop" component={<i className="bi bi-caret-up-fill" />} />
         </React.Fragment>

@@ -351,9 +351,14 @@ button:focus-visible {
 }
 
 @media (min-width: 1025px) {
-    .Sidemenu {
+    .Sidemenu.dirLeft {
         position: fixed;
         left: 0;
+    }
+
+    .Sidemenu.dirRight {
+        position: fixed;
+        right: 0;
     }
 
     .Sidemenu .sideInner {

@@ -8,13 +8,19 @@
     height: fit-content;
 }
 
-.Button #basic-button {
+.Button .react-tooltip {
+    z-index: 9999 !important;
+    border-radius: 6px;
+    background-color: rgba(67, 77, 91, 0.92);
+}
+
+.Button .exampleTitle {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.Button #basic-button:hover .anchorLink {
+.Button .exampleTitle:hover .anchorLink {
     visibility: visible;
 }
 
@@ -42,7 +48,7 @@
 }
 
 .Button .codeSample {
-    margin-bottom: 500px;
+    margin-bottom: 50px;
 }
 
 .Button .preview {
@@ -125,13 +131,81 @@
     border-color: rgb(153, 204, 243);
 }
 
-.Button .options .copyToClipboard {
+.Button .options .copyToClipboard,
+.Button .options .copyOptionsDropdown {
     padding: 8px;
     border-radius: 12px;
 }
 
-.Button .options .copyToClipboard:hover {
+.Button .options .copyToClipboard:hover,
+.Button .options .copyOptionsDropdown:hover {
     background-color: rgba(0, 0, 0, 0.04);
+}
+
+.Button .options .copyOptionsDropdown::after {
+    content: none;
+}
+
+.Button .options .dropdown-menu {
+    width: max-content;
+    border-radius: 12px;
+    border: 1px solid rgb(218, 226, 237);
+    padding: 0;
+    overflow-y: auto;
+}
+
+.Button .options .dropdown-menu li {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
+.Button .options .dropdown-menu li a,
+.Button .options .dropdown-menu li button {
+    color: rgb(67, 77, 91) !important;
+}
+
+.Button .options .dropdown-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.Button .codeEditor {
+    border: 1px solid #E5EAF2;
+    border-top: none;
+    border-radius: 0px 0px 12px 12px;
+    padding: 24px;
+    overflow: auto;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+}
+
+.Button .codeEditor:hover {
+    box-shadow: 0 0 0 3px #66B2FF;
+}
+
+.Button .codeEditor .copyCodeToClipboard {
+    position: absolute;
+    top: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    color: #FFF;
+}
+
+.Button.dirLeft .codeEditor .copyCodeToClipboard {
+    right: 8px;
+}
+
+.Button.dirRight .codeEditor .copyCodeToClipboard {
+    left: 8px;
+}
+
+.Button .codeEditor .copyCodeToClipboard:hover {
+    background-color: #3B4A59;
+}
+
+.Button .codeEditor .react-tooltip {
+    background-color: transparent !important;
 }
 
 .Button .editor .margin {
@@ -165,6 +239,11 @@
     .Button {
         width: calc(100% - 300px);
         padding: 40px 100px 0px;
+    }
+    .Button.dirLeft {
         margin-left: auto;
+    }
+    .Button.dirRight {
+        margin-right: auto;
     }
 }
