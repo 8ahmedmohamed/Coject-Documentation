@@ -4,7 +4,10 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Tooltip } from 'react-tooltip'
 
-import Editor from "@monaco-editor/react";
+// import Editor from "@monaco-editor/react";
+
+import "prismjs/themes/prism-funky.css";
+import Prism from "prismjs";
 
 import './Button.css'
 
@@ -17,6 +20,17 @@ const Button = (props: Props) => {
     const [copyStatus, setCopyStatus] = useState(false);
     const [expandCode, setExpandCode] = useState(false);
     const [jsCodeSelected, setJsCodeSelected] = useState(true);
+
+    useEffect((): void => {
+        Prism.highlightAll()
+    }, []);
+
+    const Code1 = `var message = "Hello World!";
+console.log(message);`;
+
+    const Code2 = `<button>Text</button>
+<button className='btn btn-primary'>Contained</button>
+<button className='btn btn-outline-primary'>Outlined</button>`;
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -99,12 +113,17 @@ const Button = (props: Props) => {
                             {copyStatus ? <i className="bi bi-clipboard2-check" /> : <i className="bi bi-clipboard2" />}
                         </button>
                         <Tooltip id='copyCodeToClipboard-tooltip' place='left' content="(or Ctrl + C)" />
-                        <Editor className='editor'
+                        {/* <Editor className='editor'
                             height="150px"
                             theme="vs-dark"
                             defaultLanguage="html"
                             defaultValue="// some comment"
-                        />
+                        /> */}
+                        <pre>
+                            <code className={"language-javascript"}>
+                                {Code1}
+                            </code>
+                        </pre>
                     </div>
                 </div>
 
@@ -153,7 +172,7 @@ const Button = (props: Props) => {
                         </div>
                     </div>
                     <div className='codeEditor'>
-                        {expandCode ?
+                        {/* {expandCode ?
                             <div className='expandedCode'>
                                 {`import * as React from 'react';`}<br />
                                 {`import Stack from '@mui/material/Stack';`}<br />
@@ -175,11 +194,16 @@ const Button = (props: Props) => {
                                 <br />
                                 {`<button className='btn btn-outline-primary'>Outlined</button>`}
                             </div>
-                        }
+                        } */}
                         <button data-tooltip-id="copyCodeToClipboard-tooltip" className='copyCodeToClipboard' onClick={() => copyDivToClipboard('collapsedCode2')}>
                             {copyStatus ? <i className="bi bi-clipboard2-check" /> : <i className="bi bi-clipboard2" />}
                         </button>
                         <Tooltip id='copyCodeToClipboard-tooltip' place='left' content="(or Ctrl + C)" />
+                        <pre>
+                            <code className={"language-html"}>
+                                {Code2}
+                            </code>
+                        </pre>
                     </div>
                 </div>
             </div>
