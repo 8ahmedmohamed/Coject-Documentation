@@ -169,6 +169,27 @@
     background-color: rgba(0, 0, 0, 0.04);
 }
 
+.Button .toastMessage {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button .toastChild {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 50, 50);
+    font-size: 0.875rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+}
+
 .Button .codeEditor {
     border: 1px solid #E5EAF2;
     border-top: none;
@@ -190,15 +211,7 @@
     padding: 8px;
     border-radius: 6px;
     color: #FFF;
-    z-index: 9999;
-}
-
-.Button.dirLeft .codeEditor .copyCodeToClipboard {
     right: 8px;
-}
-
-.Button.dirRight .codeEditor .copyCodeToClipboard {
-    left: 8px;
 }
 
 .Button .codeEditor .copyCodeToClipboard:hover {

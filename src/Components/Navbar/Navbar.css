@@ -270,7 +270,7 @@ button {
     padding: 20px 0;
     opacity: 0;
     background-color: #fff;
-    width: 360px;
+    width: 300px;
     transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
 }
 
