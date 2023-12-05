@@ -244,6 +244,7 @@ button:focus-visible {
     border-radius: 6px;
     font-size: 0.875rem;
     color: #434D5B;
+    text-decoration: none;
     position: relative;
     border: none;
     background-color: transparent;

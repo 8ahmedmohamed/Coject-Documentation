@@ -20,33 +20,29 @@ interface Props {
 
 const Navbar = (props: Props) => {
     const { t } = useTranslation();
-    const [language, setLanguage] = useState<string>(localStorage.LANG || "ar");
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
     const [searchData, setSearchData] = useState<string>('');
     const htmlRoot = document.querySelector("html") as HTMLElement;
 
     const LanguageHandling = () => {
-        setLanguage(language === 'ar' ? 'en' : 'ar')
-        localStorage.LANG = language === 'ar' ? 'en' : 'ar';
-    };
-
-    useEffect(() => {
+        localStorage.LANG = localStorage.LANG === 'ar' ? 'en' : 'ar';
         props.setDirection(localStorage.LANG == "en" ? 'left' : 'right');
-        htmlRoot.setAttribute("dir", language === "en" ? "ltr" : "rtl");
-        htmlRoot.setAttribute("lang", language === "en" ? "en" : "ar");
-        i18next.changeLanguage(language).then();
-    }, [htmlRoot, language, props]);
+        htmlRoot.setAttribute("dir", localStorage.LANG === "en" ? "ltr" : "rtl");
+        htmlRoot.setAttribute("lang", localStorage.LANG === "en" ? "en" : "ar");
+        i18next.changeLanguage(localStorage.LANG).then();
+    };
 
     const ChangeDirection = (dir: string) => {
         props.setDirection(dir);
         localStorage.LANG = dir === 'left' ? 'en' : 'ar';
-    }
+        htmlRoot.setAttribute("dir", dir === "left" ? "ltr" : "rtl");
+    };
 
     useEffect(() => {
-        htmlRoot.setAttribute("dir", props.direction === "left" ? "ltr" : "rtl");
-    }, [htmlRoot, props]);
-
-    useEffect(() => {
+        props.setDirection(localStorage.LANG == "en" ? 'left' : 'right');
+        htmlRoot.setAttribute("dir", localStorage.LANG === "en" ? "ltr" : "rtl");
+        htmlRoot.setAttribute("lang", localStorage.LANG === "en" ? "en" : "ar");
+        i18next.changeLanguage(localStorage.LANG).then();
         const modal = document.getElementById('exampleModal');
 
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -103,7 +99,7 @@ const Navbar = (props: Props) => {
 
     return (
         <React.Fragment>
-            <div className={`Navbar ${props.direction == 'left' ? 'dirLeft' : 'dirRight'}`}>
+            <div className={`Navbar ${localStorage.getItem('LANG') === 'en' ? 'dirLeft' : 'dirRight'}`}>
                 <nav className="navbar navbar-expand-sm">
                     <div className="container-fluid">
                         <div className='d-flex'>
@@ -267,11 +263,11 @@ const Navbar = (props: Props) => {
                         <div className="content">
                             <h6>DIRECTION</h6>
                             <div className="direction">
-                                <button className={`navButtons ${props.direction == 'left' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
+                                <button className={`navButtons ${localStorage.getItem('LANG') === 'en' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
                                     <i className="bi bi-arrow-return-right"></i>
                                     <span>{t('Left to Right')}</span>
                                 </button>
-                                <button className={`navButtons ${props.direction === 'right' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
+                                <button className={`navButtons ${localStorage.getItem('LANG') === 'ar' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
                                     <i className="bi bi-arrow-return-left"></i>
                                     <span>{t('Right to Left')}</span>
                                 </button>

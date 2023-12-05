@@ -5,23 +5,22 @@ import { Tooltip } from 'react-tooltip'
 import "prismjs/themes/prism-funky.css";
 import Prism from "prismjs";
 
-import './Button.css'
+import './Dropdown.css'
 
 interface MyObject {
     [key: string]: boolean;
 }
 
-const Button = () => {
+const Dropdown = () => {
     const [copyToClipboardOutside, setCopyToClipboardOutside] = useState<boolean>(false);
     const [copyToClipboardId, setCopyToClipboardId] = useState<string>('');
     const [toastMessage, setToastMessage] = useState<boolean>(false);
     const [expandCode, setExpandCode] = useState<Array<MyObject>>([]);
-    const [expandStatus, setExpandStatus] = useState<boolean>(false);
     const [jsCodeSelected, setJsCodeSelected] = useState<boolean>(true);
 
     useEffect((): void => {
         Prism.highlightAll()
-    }, [expandStatus]);
+    }, [expandCode]);
 
     const toggleCode = (id: string) => {
         const obj: MyObject = {}
@@ -31,10 +30,6 @@ const Button = () => {
         indexOfObject !== -1 && arr.splice(indexOfObject, 1);
         arr.push(obj)
         setExpandCode(arr)
-        setExpandStatus(!expandStatus)
-
-        // expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
-        //     expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1']
     }
 
     const Code1 = `<Button variant="text">Text</Button>
@@ -69,22 +64,23 @@ const Button = () => {
 
     return (
         <React.Fragment>
-            <div className={`Button`}>
-                <h1>Button</h1>
-                <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
-                <p>Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:</p>
-                <ul>
-                    <li>Modal windows</li>
-                    <li>Forms</li>
-                    <li>Cards</li>
-                    <li>Toolbars</li>
-                </ul>
+            <div className={`Dropdown`}>
+                <h1>Dropdown</h1>
+                <p>The autocomplete is a normal text input enhanced by a panel of suggested options.</p>
+                <p>The widget is useful for setting the value of a single-line textbox in one of two types of scenarios:</p>
+                <ol>
+                    <li>The value for the textbox must be chosen from a predefined set of allowed values, e.g., 
+                        a location field must contain a valid location name: combo box.</li>
+                    <li>The textbox may contain any arbitrary value, but it is advantageous to suggest possible values to the user, e.g., 
+                        a search field may suggest similar or previous searches to save the user time: free solo.</li>
+                </ol>
+                <p>It's meant to be an improved version of the "react-select" and "downshift" packages.</p>
 
                 <h3 id="basic-button" className='exampleTitle'>
-                    Basic button
+                    Combo box
                     <a className='anchorLink' href="#basic-button"><i className="bi bi-link" /></a>
                 </h3>
-                <p>The <span>Button</span> comes with three variants: text (default), contained, and outlined.</p>
+                <p>The value must be chosen from a predefined set of allowed values.</p>
                 <div className='codeSample mt-4'>
                     <div className='preview'>
                         <button>Text</button>
@@ -92,12 +88,14 @@ const Button = () => {
                         <button className='btn btn-outline-primary'>Outlined</button>
                     </div>
                     <div className='optionsContainer'>
-                        <div className={`codeTypes ${expandStatus ? 'showCodeTypes' : 'hideCodeTypes'}`}>
+                        <div className={`codeTypes ${expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
+                            expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? 'showCodeTypes' : 'hideCodeTypes'}`}>
                             <button className={`jsCode ${jsCodeSelected ? 'selected' : ''}`} onClick={() => { setJsCodeSelected(true) }}>JS</button>
                             <button className={`tsCode ${jsCodeSelected ? '' : 'selected'}`} onClick={() => { setJsCodeSelected(false) }}>TS</button>
                         </div>
                         <div className='options'>
-                            <button className='collapsingCode' onClick={() => toggleCode('code1')}>{expandStatus ? 'Collapse code' : 'Expand code'}</button>
+                            <button className='collapsingCode' onClick={() => toggleCode('code1')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
+                                expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? 'Collapse code' : 'Expand code'}</button>
                             <button data-tooltip-id="copyToClipboard-tooltip1" className='copyToClipboard' onClick={() => { copyDivToClipboard('code1'); setCopyToClipboardOutside(true); setToastMessage(true) }}>
                                 {copyToClipboardId === 'code1' && copyToClipboardOutside ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}
                             </button>
@@ -127,7 +125,8 @@ const Button = () => {
                         <Tooltip id='copyCodeToClipboard-tooltip1' place='left' content="(or Ctrl + C)" />
                         <pre>
                             <code id='code1' className={"language-html"}>
-                                {expandStatus ? Code2 : Code1}
+                                {expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
+                                    expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? Code2 : Code1}
                             </code>
                         </pre>
                     </div>
@@ -148,12 +147,14 @@ const Button = () => {
                         <button type="button" className="btn btn-outline-secondary" disabled>Button</button>
                     </div>
                     <div className='optionsContainer'>
-                        <div className={`codeTypes ${expandStatus ? 'showCodeTypes' : 'hideCodeTypes'}`}>
+                        <div className={`codeTypes ${expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
+                            expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'showCodeTypes' : 'hideCodeTypes'}`}>
                             <button className={`jsCode ${jsCodeSelected ? 'selected' : ''}`} onClick={() => { setJsCodeSelected(true) }}>JS</button>
                             <button className={`tsCode ${jsCodeSelected ? '' : 'selected'}`} onClick={() => { setJsCodeSelected(false) }}>TS</button>
                         </div>
                         <div className='options'>
-                            <button className='collapsingCode' onClick={() => toggleCode('code2')}>{expandStatus ? 'Collapse code' : 'Expand code'}</button>
+                            <button className='collapsingCode' onClick={() => toggleCode('code2')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
+                                expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'Collapse code' : 'Expand code'}</button>
                             <button data-tooltip-id="copyToClipboard-tooltip2" className='copyToClipboard' onClick={() => { copyDivToClipboard('code2'); setCopyToClipboardOutside(true); setToastMessage(true) }}>
                                 {copyToClipboardId === 'code2' && copyToClipboardOutside ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}
                             </button>
@@ -183,7 +184,8 @@ const Button = () => {
                         <Tooltip id='copyCodeToClipboard-tooltip2' place='left' content="(or Ctrl + C)" />
                         <pre>
                             <code id='code2' className={"language-html"}>
-                                {expandStatus ? Code1 : Code2}
+                                {expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
+                                    expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? Code1 : Code2}
                             </code>
                         </pre>
                     </div>
@@ -199,4 +201,4 @@ const Button = () => {
     )
 }
 
-export default Button
+export default Dropdown

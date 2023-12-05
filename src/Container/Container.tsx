@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import Sidebar from '../Components/Sidebar/Sidebar';
 import Navbar from '../Components/Navbar/Navbar';
 import ScrollToTop from "react-scroll-to-top";
-import Button from '../Pages/Button/Button';
+
+// React Router
+import { Outlet } from "react-router-dom";
 
 import './Container.css'
 
@@ -16,9 +18,9 @@ const Container = () => {
             <Navbar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} setDirection={setDirection} />
             <div className="d-flex" style={{ marginTop: '62px' }}>
                 <Sidebar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} />
-                <Button direction={direction}/>
+                <Outlet/>
             </div>
-            <ScrollToTop smooth className="scrollToTop" component={<i className="bi bi-caret-up-fill" />} />
+            <ScrollToTop smooth className={`scrollToTop ${direction === 'left' ? '' : 'dirRight'}`} component={<i className="bi bi-caret-up-fill" />} />
         </React.Fragment>
     )
 }

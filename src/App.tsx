@@ -1,11 +1,14 @@
 import React from "react";
+
+import RouteProvider from './Routes/RouteProvider'
+
 import "./App.css";
-import Container from "./Container/Container";
 
 function App() {
   return (
     <React.Fragment>
-      <Container/>
+      <RouteProvider>
+      </RouteProvider>
     </React.Fragment>
   );
 }

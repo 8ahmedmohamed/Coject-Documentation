@@ -2,6 +2,9 @@ import React from 'react'
 
 import coject from '../../assets/favicon.ico'
 
+//React Router
+import { NavLink } from 'react-router-dom';
+
 import './Sidebar.css'
 
 interface Props {
@@ -16,7 +19,7 @@ const Sidebar = (props: Props) => {
             {props.toggleSideMenu &&
                 <div className="showSidemenuContainer" onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }} />
             }
-            <div className={`Sidemenu ${props.toggleSideMenu ? 'showSidemenu' : ''} ${props.direction == 'left' ? 'dirLeft' : 'dirRight'}`}>
+            <div className={`Sidemenu ${props.toggleSideMenu ? 'showSidemenu' : ''} ${props.direction === 'left' ? 'dirLeft' : 'dirRight'}`}>
                 <div className="sideInner">
                     <div className='sidemenuDiscreption pb-2'>
                         <div className="logo">
@@ -106,8 +109,8 @@ const Sidebar = (props: Props) => {
                             <div className="listContent collapse" id="components">
                                 <div className="listSubTitle">INPUTS</div>
                                 <ul className="list-unstyled">
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
+                                    <li><NavLink className="listItems" to={'/'}>Button</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/dropdown'}>Dropdown</NavLink></li>
                                     <li><button className="listItems">Monthly</button></li>
                                     <li><button className="listItems">Annually</button></li>
                                     <li><button className="listItems">Overview</button></li>

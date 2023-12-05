@@ -1,30 +1,30 @@
-.Button a {
+.Dropdown a {
     text-decoration: none;
 }
 
-.Button .bi {
+.Dropdown .bi {
     display: flex;
     align-items: center;
     height: fit-content;
 }
 
-.Button .react-tooltip {
+.Dropdown .react-tooltip {
     z-index: 9999 !important;
     border-radius: 6px;
     background-color: rgba(67, 77, 91, 0.92);
 }
 
-.Button .exampleTitle {
+.Dropdown .exampleTitle {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.Button .exampleTitle:hover .anchorLink {
+.Dropdown .exampleTitle:hover .anchorLink {
     visibility: visible;
 }
 
-.Button .anchorLink {
+.Dropdown .anchorLink {
     display: flex;
     align-items: center;
     padding: 4px;
@@ -36,22 +36,22 @@
     visibility: hidden;
 }
 
-.Button .anchorLink:hover {
+.Dropdown .anchorLink:hover {
     border: 1px solid #c2e0ff;
     color: #007fff;
     background-color: rgba(194, 224, 255, 0.4);
 }
 
-.Button .anchorLink .bi-link::before {
+.Dropdown .anchorLink .bi-link::before {
     font-size: 1rem;
     font-weight: 600 !important;
 }
 
-.Button .codeSample {
+.Dropdown .codeSample {
     margin-bottom: 50px;
 }
 
-.Button .preview {
+.Dropdown .preview {
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -60,7 +60,7 @@
     padding: 24px;
 }
 
-.Button .optionsContainer {
+.Dropdown .optionsContainer {
     display: flex;
     justify-content: space-between;
     border: 1px solid #E5EAF2;
@@ -68,24 +68,24 @@
     padding: 4px 8px;
 }
 
-.Button .optionsContainer .codeTypes {
+.Dropdown .optionsContainer .codeTypes {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.Button .optionsContainer .hideCodeTypes {
+.Dropdown .optionsContainer .hideCodeTypes {
     opacity: 0;
     visibility: hidden;
 }
 
-.Button .optionsContainer .showCodeTypes {
+.Dropdown .optionsContainer .showCodeTypes {
     opacity: 1;
     visibility: visible;
 }
 
-.Button .codeTypes .jsCode,
-.Button .codeTypes .tsCode {
+.Dropdown .codeTypes .jsCode,
+.Dropdown .codeTypes .tsCode {
     display: flex;
     height: fit-content;
     border: 1px solid #E5EAF2;
@@ -94,30 +94,30 @@
     font-size: 0.8125rem;
 }
 
-.Button .codeTypes .jsCode:hover,
-.Button .codeTypes .tsCode:hover {
+.Dropdown .codeTypes .jsCode:hover,
+.Dropdown .codeTypes .tsCode:hover {
     background-color: rgb(240, 243, 248);
 }
 
-.Button .codeTypes .jsCode.selected,
-.Button .codeTypes .tsCode.selected {
+.Dropdown .codeTypes .jsCode.selected,
+.Dropdown .codeTypes .tsCode.selected {
     border-color: #007FFF;
     background-color: rgba(0, 127, 255, 0.08);
     color: #007FFF;
 }
 
-.Button .codeTypes .jsCode.selected:hover,
-.Button .codeTypes .tsCode.selected:hover {
+.Dropdown .codeTypes .jsCode.selected:hover,
+.Dropdown .codeTypes .tsCode.selected:hover {
     background-color: rgb(194, 224, 255);
 }
 
-.Button .options {
+.Dropdown .options {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.Button .options .collapsingCode {
+.Dropdown .options .collapsingCode {
     padding: 3px 8px 5px;
     border-radius: 999px;
     border: 1px solid rgba(194, 224, 255, 0.6);
@@ -126,27 +126,27 @@
     color: rgb(0, 127, 255);
 }
 
-.Button .options .collapsingCode:hover {
+.Dropdown .options .collapsingCode:hover {
     background-color: rgb(240, 247, 255);
     border-color: rgb(153, 204, 243);
 }
 
-.Button .options .copyToClipboard,
-.Button .options .copyOptionsDropdown {
+.Dropdown .options .copyToClipboard,
+.Dropdown .options .copyOptionsDropdown {
     padding: 8px;
     border-radius: 12px;
 }
 
-.Button .options .copyToClipboard:hover,
-.Button .options .copyOptionsDropdown:hover {
+.Dropdown .options .copyToClipboard:hover,
+.Dropdown .options .copyOptionsDropdown:hover {
     background-color: rgba(0, 0, 0, 0.04);
 }
 
-.Button .options .copyOptionsDropdown::after {
+.Dropdown .options .copyOptionsDropdown::after {
     content: none;
 }
 
-.Button .options .dropdown-menu {
+.Dropdown .options .dropdown-menu {
     width: max-content;
     border-radius: 12px;
     border: 1px solid rgb(218, 226, 237);
@@ -154,22 +154,22 @@
     overflow-y: auto;
 }
 
-.Button .options .dropdown-menu li {
+.Dropdown .options .dropdown-menu li {
     display: flex;
     justify-content: center;
     padding: 8px;
 }
 
-.Button .options .dropdown-menu li a,
-.Button .options .dropdown-menu li button {
+.Dropdown .options .dropdown-menu li a,
+.Dropdown .options .dropdown-menu li button {
     color: rgb(67, 77, 91) !important;
 }
 
-.Button .options .dropdown-menu li:hover {
+.Dropdown .options .dropdown-menu li:hover {
     background-color: rgba(0, 0, 0, 0.04);
 }
 
-.Button .toastMessage {
+.Dropdown .toastMessage {
     position: fixed;
     left: 24px;
     bottom: 24px;
@@ -178,7 +178,7 @@
     align-items: center;
 }
 
-.Button .toastChild {
+.Dropdown .toastChild {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -190,7 +190,7 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
 }
 
-.Button .codeEditor {
+.Dropdown .codeEditor {
     border: 1px solid #E5EAF2;
     border-top: none;
     border-radius: 0px 0px 12px 12px;
@@ -201,11 +201,11 @@
     position: relative;
 }
 
-.Button .codeEditor:hover {
+.Dropdown .codeEditor:hover {
     box-shadow: 0 0 0 3px #66B2FF;
 }
 
-.Button .codeEditor .copyCodeToClipboard {
+.Dropdown .codeEditor .copyCodeToClipboard {
     position: absolute;
     top: 8px;
     padding: 8px;
@@ -214,52 +214,52 @@
     right: 8px;
 }
 
-.Button .codeEditor .copyCodeToClipboard:hover {
+.Dropdown .codeEditor .copyCodeToClipboard:hover {
     background-color: #3B4A59;
 }
 
-.Button .codeEditor .react-tooltip {
+.Dropdown .codeEditor .react-tooltip {
     background-color: transparent !important;
 }
 
-.Button .editor {
+.Dropdown .editor {
     pointer-events: none;
 }
 
-.Button .editor .monaco-editor,
-.Button .editor .monaco-editor-background,
-.Button .editor .view-line {
+.Dropdown .editor .monaco-editor,
+.Dropdown .editor .monaco-editor-background,
+.Dropdown .editor .view-line {
     background-color: black;
 }
 
-.Button .editor .margin,
-.Button .editor .minimap.slider-mouseover,
-.Button .editor .decorationsOverviewRuler {
+.Dropdown .editor .margin,
+.Dropdown .editor .minimap.slider-mouseover,
+.Dropdown .editor .decorationsOverviewRuler {
     display: none !important;
 }
 
-.Button .editor .monaco-scrollable-element {
+.Dropdown .editor .monaco-scrollable-element {
     left: 0 !important;
 }
 
 @media (min-width: 0px) and (max-width: 1024px) {
-    .Button {
+    .Dropdown {
         width: 100%;
         padding: 40px 40px 0px;
     }
 }
 
 @media (min-width: 1025px) {
-    .Button {
+    .Dropdown {
         width: calc(100% - 300px);
         padding: 40px 100px 0px;
     }
 
-    html[dir="ltr"] .Button {
+    html[dir="ltr"] .Dropdown {
         margin-left: auto;
     }
     
-    html[dir="rtl"] .Button {
+    html[dir="rtl"] .Dropdown {
         margin-right: auto;
     }
 }
