@@ -109,8 +109,8 @@ const Sidebar = (props: Props) => {
                             <div className="listContent collapse" id="components">
                                 <div className="listSubTitle">INPUTS</div>
                                 <ul className="list-unstyled">
-                                    <li><NavLink className="listItems" to={'/'}>Button</NavLink></li>
-                                    <li><NavLink className="listItems" to={'/dropdown'}>Dropdown</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Button</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/dropdown'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Dropdown</NavLink></li>
                                     <li><button className="listItems">Monthly</button></li>
                                     <li><button className="listItems">Annually</button></li>
                                     <li><button className="listItems">Overview</button></li>

@@ -2,6 +2,9 @@ import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 
+//loading
+import Loading from './Components/Loading/Loading';
+
 // Translation
 import './Services/Translations/Translation.tsx';
 
@@ -13,7 +16,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
-    <Suspense>
+    <Suspense fallback={<Loading />}>
       <BrowserRouter basename={'/'}>
         <App />
       </BrowserRouter>

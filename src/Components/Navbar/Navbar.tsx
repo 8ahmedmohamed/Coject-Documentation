@@ -71,6 +71,7 @@ const Navbar = (props: Props) => {
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const items = StaticData.filter((data) => {

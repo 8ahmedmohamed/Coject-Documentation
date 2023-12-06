@@ -16,13 +16,14 @@ const Dropdown = () => {
     const [copyToClipboardId, setCopyToClipboardId] = useState<string>('');
     const [toastMessage, setToastMessage] = useState<boolean>(false);
     const [expandCode, setExpandCode] = useState<Array<MyObject>>([]);
+    const [expandStatus, setExpandStatus] = useState<boolean>(false);
     const [jsCodeSelected, setJsCodeSelected] = useState<boolean>(true);
 
     useEffect((): void => {
         Prism.highlightAll()
-    }, [expandCode]);
+    }, [expandStatus]);
 
-    const toggleCode = (id: string) => {
+    const ToggleCode = (id: string) => {
         const obj: MyObject = {}
         const arr = expandCode
         const indexOfObject = arr.findIndex(object => Object.keys(object)[0] === id);
@@ -30,6 +31,7 @@ const Dropdown = () => {
         indexOfObject !== -1 && arr.splice(indexOfObject, 1);
         arr.push(obj)
         setExpandCode(arr)
+        setExpandStatus(!expandStatus)
     }
 
     const Code1 = `<Button variant="text">Text</Button>
@@ -94,7 +96,7 @@ const Dropdown = () => {
                             <button className={`tsCode ${jsCodeSelected ? '' : 'selected'}`} onClick={() => { setJsCodeSelected(false) }}>TS</button>
                         </div>
                         <div className='options'>
-                            <button className='collapsingCode' onClick={() => toggleCode('code1')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
+                            <button className='collapsingCode' onClick={() => ToggleCode('code1')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
                                 expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? 'Collapse code' : 'Expand code'}</button>
                             <button data-tooltip-id="copyToClipboard-tooltip1" className='copyToClipboard' onClick={() => { copyDivToClipboard('code1'); setCopyToClipboardOutside(true); setToastMessage(true) }}>
                                 {copyToClipboardId === 'code1' && copyToClipboardOutside ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}
@@ -153,7 +155,7 @@ const Dropdown = () => {
                             <button className={`tsCode ${jsCodeSelected ? '' : 'selected'}`} onClick={() => { setJsCodeSelected(false) }}>TS</button>
                         </div>
                         <div className='options'>
-                            <button className='collapsingCode' onClick={() => toggleCode('code2')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
+                            <button className='collapsingCode' onClick={() => ToggleCode('code2')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
                                 expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'Collapse code' : 'Expand code'}</button>
                             <button data-tooltip-id="copyToClipboard-tooltip2" className='copyToClipboard' onClick={() => { copyDivToClipboard('code2'); setCopyToClipboardOutside(true); setToastMessage(true) }}>
                                 {copyToClipboardId === 'code2' && copyToClipboardOutside ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}
