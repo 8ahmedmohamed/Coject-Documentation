@@ -17,7 +17,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
     <Suspense fallback={<Loading />}>
-      <BrowserRouter basename={'/CojectDecuomention'}>
+      <BrowserRouter basename={'/'}>
         <App />
       </BrowserRouter>
     </Suspense>

@@ -95,9 +95,7 @@ const Sidebar = (props: Props) => {
                             </button>
                             <div className="listContent collapse" id="getting-started">
                                 <ul className="list-unstyled">
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Updates</button></li>
-                                    <li><button className="listItems">Reports</button></li>
+                                    <li><button className="listItems">Installation</button></li>
                                 </ul>
                             </div>
                         </li>
@@ -107,39 +105,6 @@ const Sidebar = (props: Props) => {
                                 <span className="listTitle">Components</span>
                             </button>
                             <div className="listContent collapse" id="components">
-                                <div className="listSubTitle">INPUTS</div>
-                                <ul className="list-unstyled">
-                                    <li><NavLink className="listItems" to={'/'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Button</NavLink></li>
-                                    <li><NavLink className="listItems" to={'/dropdown'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Dropdown</NavLink></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                </ul>
-                                <div className="listSubTitle">DATA DISPLAY</div>
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                </ul>
-                                <div className="listSubTitle">FEEDBACK</div>
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                    <li><button className="listItems">Overview</button></li>
-                                    <li><button className="listItems">Weekly</button></li>
-                                    <li><button className="listItems">Monthly</button></li>
-                                    <li><button className="listItems">Annually</button></li>
-                                </ul>
                             </div>
                         </li>
                         <li className="sideBarList mb-0">
@@ -148,11 +113,13 @@ const Sidebar = (props: Props) => {
                                 <span className="listTitle">Component API</span>
                             </button>
                             <div className="listContent collapse" id="component-api">
+                            <div className="listSubTitle">INPUTS</div>
                                 <ul className="list-unstyled">
-                                    <li><button className="listItems">New</button></li>
-                                    <li><button className="listItems">Processed</button></li>
-                                    <li><button className="listItems">Shipped</button></li>
-                                    <li><button className="listItems">Returned</button></li>
+                                    <li><NavLink className="listItems" to={'/'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Button</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/switch'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Switch</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/checkbox'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Checkbox</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/select'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Select</NavLink></li>
+                                    <li><NavLink className="listItems" to={'/grid'} onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>Grid</NavLink></li>
                                 </ul>
                             </div>
                         </li>
@@ -163,66 +130,7 @@ const Sidebar = (props: Props) => {
                             </button>
                             <div className="listContent collapse" id="customization">
                                 <ul className="list-unstyled">
-                                    <li><button className="listItems">New...</button></li>
-                                    <li><button className="listItems">Profile</button></li>
-                                    <li><button className="listItems">Settings</button></li>
-                                    <li><button className="listItems">Sign out</button></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="sideBarList mb-0">
-                            <button className="listButton" type="button" data-bs-toggle="collapse" data-bs-target="#how-to-guide"
-                                aria-expanded="false" aria-controls="how-to-guide">
-                                <span className="listTitle">How-to guides</span>
-                            </button>
-                            <div className="listContent collapse" id="how-to-guide">
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">New...</button></li>
-                                    <li><button className="listItems">Profile</button></li>
-                                    <li><button className="listItems">Settings</button></li>
-                                    <li><button className="listItems">Sign out</button></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="sideBarList mb-0">
-                            <button className="listButton" type="button" data-bs-toggle="collapse" data-bs-target="#experimental-apis"
-                                aria-expanded="false" aria-controls="experimental-apis">
-                                <span className="listTitle">Experimental APIs</span>
-                            </button>
-                            <div className="listContent collapse" id="experimental-apis">
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">New...</button></li>
-                                    <li><button className="listItems">Profile</button></li>
-                                    <li><button className="listItems">Settings</button></li>
-                                    <li><button className="listItems">Sign out</button></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="sideBarList mb-0">
-                            <button className="listButton" type="button" data-bs-toggle="collapse" data-bs-target="#discover-more"
-                                aria-expanded="false" aria-controls="discover-more">
-                                <span className="listTitle">Discover more</span>
-                            </button>
-                            <div className="listContent collapse" id="discover-more">
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">New...</button></li>
-                                    <li><button className="listItems">Profile</button></li>
-                                    <li><button className="listItems">Settings</button></li>
-                                    <li><button className="listItems">Sign out</button></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="sideBarList mb-0">
-                            <button className="listButton" type="button" data-bs-toggle="collapse" data-bs-target="#migration"
-                                aria-expanded="false" aria-controls="migration">
-                                <span className="listTitle">Migration</span>
-                            </button>
-                            <div className="listContent collapse" id="migration">
-                                <ul className="list-unstyled">
-                                    <li><button className="listItems">New...</button></li>
-                                    <li><button className="listItems">Profile</button></li>
-                                    <li><button className="listItems">Settings</button></li>
-                                    <li><button className="listItems">Sign out</button></li>
+                                    <li><button className="listItems">Theme</button></li>
                                 </ul>
                             </div>
                         </li>

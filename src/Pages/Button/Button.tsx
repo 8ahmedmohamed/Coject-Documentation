@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import { Tooltip } from 'react-tooltip'
 
+import { Stack } from '@mui/material';
+// import { Button as Btncoject } from 'coject';
+
 import "prismjs/themes/prism-funky.css";
 import Prism from "prismjs";
 
@@ -24,7 +27,7 @@ const Button = () => {
 
     useEffect((): void => {
         Prism.highlightAll()
-    }, [expandStatus,jsCodeStatus]);
+    }, [expandStatus, jsCodeStatus]);
 
     const ToggleCode = (id: string) => {
         const obj: MyObject = {}
@@ -86,6 +89,11 @@ const Button = () => {
                 <p>The <span>Button</span> comes with three variants: text (default), contained, and outlined.</p>
                 <div className='codeSample mt-4'>
                     <div className='preview'>
+                        <Stack spacing={2} direction='row'>
+                            {/* <Btncoject variant='text'>Text</Btncoject>
+                            <Btncoject variant='contained'>Contained</Btncoject>
+                            <Btncoject variant='outlined'>Outlined</Btncoject> */}
+                        </Stack>
                         <button>Text</button>
                         <button className='btn btn-primary'>Contained</button>
                         <button className='btn btn-outline-primary'>Outlined</button>
@@ -131,74 +139,10 @@ const Button = () => {
                         <pre>
                             <code id='code1' className={"language-html"}>
                                 {expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
-                                    expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? 
+                                    expandCode.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ?
                                     (jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code1'))[0] !== undefined &&
-                                    jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? ButtonCodes['code1'].expandts : ButtonCodes['code1'].expandjs) : 
+                                        jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code1'))[0]['code1'] ? ButtonCodes['code1'].expandts : ButtonCodes['code1'].expandjs) :
                                     ButtonCodes['code1'].collapse}
-                            </code>
-                        </pre>
-                    </div>
-                </div>
-
-                <h3 id="text-button" className='exampleTitle'>
-                    Text button
-                    <a className='anchorLink' href="#text-button"><i className="bi bi-link" /></a>
-                </h3>
-                <p>
-                    <a href="">Text buttons</a> are typically used for less-pronounced actions, including those located: in dialogs, in cards. In cards,
-                    text buttons help maintain an emphasis on card content.
-                </p>
-                <div className='codeSample mt-4'>
-                    <div className='preview'>
-                        <button type="button" className="btn btn-secondary" disabled>Button</button>
-                        <button type="button" className="btn btn-outline-primary" disabled>Primary button</button>
-                        <button type="button" className="btn btn-outline-secondary" disabled>Button</button>
-                    </div>
-                    <div className='optionsContainer'>
-                        <div className={`codeTypes ${expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                            expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'showCodeTypes' : 'hideCodeTypes'}`}>
-                            <button className={`jsCode ${jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                                jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? '' : 'selected'}`} onClick={() => { ToggleJsCode('code2') }}>JS</button>
-                            <button className={`tsCode ${jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                                jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'selected' : ''}`} onClick={() => { ToggleJsCode('code2') }}>TS</button>
-                        </div>
-                        <div className='options'>
-                            <button className='collapsingCode' onClick={() => ToggleCode('code2')}>{expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                                expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 'Collapse code' : 'Expand code'}</button>
-                            <button data-tooltip-id="copyToClipboard-tooltip2" className='copyToClipboard' onClick={() => { copyDivToClipboard('code2'); setCopyToClipboardOutside(true); setToastMessage(true) }}>
-                                {copyToClipboardId === 'code2' && copyToClipboardOutside ? <i className="bi bi-clipboard-check" /> : <i className="bi bi-clipboard" />}
-                            </button>
-                            <Tooltip id='copyToClipboard-tooltip2' place='bottom' content="Copy the source" />
-                            <div className='dropdown'>
-                                <button className='copyOptionsDropdown dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i className="bi bi-three-dots-vertical" />
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li>
-                                        <a href='https://github.com/8ahmedmohamed/Coject-Documentation'>View the source on GitHub</a>
-                                    </li>
-                                    <li>
-                                        <button className='p-0'>Copy link to JavaScript source</button>
-                                    </li>
-                                    <li>
-                                        <button className='p-0'>Copy link to TypeScript source</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='codeEditor'>
-                        <button data-tooltip-id="copyCodeToClipboard-tooltip2" className='copyCodeToClipboard' onClick={() => { copyDivToClipboard('code2'); setCopyToClipboardOutside(false) }}>
-                            {copyToClipboardId === 'code2' && !copyToClipboardOutside ? <i className="bi bi-clipboard2-check" /> : <i className="bi bi-clipboard2" />}
-                        </button>
-                        <Tooltip id='copyCodeToClipboard-tooltip2' place='left' content="(or Ctrl + C)" />
-                        <pre>
-                            <code id='code2' className={"language-html"}>
-                                {expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                                    expandCode.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? 
-                                    (jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0] !== undefined &&
-                                    jsCodeSelected.filter((item) => (Object.keys(item)[0] === 'code2'))[0]['code2'] ? ButtonCodes['code2'].expandts : ButtonCodes['code2'].expandjs) : 
-                                    ButtonCodes['code2'].collapse}
                             </code>
                         </pre>
                     </div>

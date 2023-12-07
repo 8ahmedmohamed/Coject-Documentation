@@ -183,7 +183,7 @@ const Navbar = (props: Props) => {
                         <div className="navOptions">
                             <div className='lang mx-2' onClick={LanguageHandling}>
                                 <div><i className="bi bi-translate"></i></div>
-                                <div>{localStorage.getItem('LANG') === 'ar' ? 'Arabic' : 'English'}</div>
+                                <div>{localStorage.getItem('LANG') === 'en' ? 'English' : 'Arabic'}</div>
                             </div>
                             <form className="d-flex">
                                 <button className="navbarSearch mx-2" type='button' data-bs-toggle="modal" data-bs-target="#exampleModal">

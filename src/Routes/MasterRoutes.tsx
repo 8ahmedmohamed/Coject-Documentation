@@ -6,7 +6,10 @@ import { useRoutes } from 'react-router-dom';
 // Lazy Loading
 const Container = lazy(() => import('../Container/Container'));
 const Button = lazy(() => import('../Pages/Button/Button'));
-const Dropdown = lazy(() => import('../Pages/Dropdown/Dropdown'));
+const Switch = lazy(() => import('../Pages/Switch/Switch'));
+const Checkbox = lazy(() => import('../Pages/Checkbox/Checkbox'));
+const Select = lazy(() => import('../Pages/Select/Select'));
+const Grid = lazy(() => import('../Pages/Grid/Grid'));
 
 
 const MasterRoutes: FC = () => {
@@ -18,7 +21,10 @@ const MasterRoutes: FC = () => {
             element: <Container />,
             children: [
                 { path: Path, element: <Button /> },
-                { path: 'dropdown', element: <Dropdown /> },
+                { path: 'switch', element: <Switch /> },
+                { path: 'checkbox', element: <Checkbox /> },
+                { path: 'select', element: <Select /> },
+                { path: 'grid', element: <Grid /> },
             ]
         },
     ])

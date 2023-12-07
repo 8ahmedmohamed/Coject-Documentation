@@ -1,0 +1,14 @@
+@media (min-width: 1025px) {
+    .Checkbox {
+        width: calc(100% - 300px);
+        padding: 40px 100px 0px;
+    }
+
+    html[dir="ltr"] .Checkbox {
+        margin-left: auto;
+    }
+    
+    html[dir="rtl"] .Checkbox {
+        margin-right: auto;
+    }
+}

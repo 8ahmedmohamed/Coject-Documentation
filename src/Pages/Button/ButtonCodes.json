@@ -1,37 +1,37 @@
 {
-    "code1":{
-        "collapse":"<Button variant='text'>Text</Button>\n<Button variant='contained'>Contained</Button>\n<Button variant='outlined'>Outlined</Button>",
-        "expandjs":"<Button variant='contained'>Contained</Button>\n<Button variant='contained' disabled>\n\tDisabled\n</Button>\n<Button variant='contained' href='#contained-buttons'>\n\tLink\n</Button>",
-        "expandts":"import * as React from 'react';\nimport Stack from '@mui/material/Stack';\nimport Button from '@mui/material/Button';\n\nexport default function BasicButtons() {\n\treturn (\n\t\t<Stack spacing={2} direction='row'>\n\t\t\t<Button variant='text'>Text</Button>\n\t\t\t<Button variant='contained'>Contained</Button>\n\t\t\t<Button variant='outlined'>Outlined</Button>\n\t\t</Stack>\n\t);\n}"
+    "code1": {
+        "collapse": "<Button variant='text'>Text</Button>\n<Button variant='contained'>Contained</Button>\n<Button variant='outlined'>Outlined</Button>",
+        "expandjs": "import * as React from 'react';\nimport { Stack } from '@mui/material';\nimport { Button } from 'coject';\n\nexport default function BasicButtons() {\n\treturn (\n\t\t<Stack spacing={2} direction='row'>\n\t\t\t<Button variant='text'>Text</Button>\n\t\t\t<Button variant='contained'>Contained</Button>\n\t\t\t<Button variant='outlined'>Outlined</Button>\n\t\t</Stack>\n\t);\n}",
+        "expandts": "import * as React from 'react';\nimport { Stack } from '@mui/material';\nimport { Button } from 'coject';\n\nexport default function BasicButtons() {\n\treturn (\n\t\t<Stack spacing={2} direction='row'>\n\t\t\t<Button variant='text'>Text</Button>\n\t\t\t<Button variant='contained'>Contained</Button>\n\t\t\t<Button variant='outlined'>Outlined</Button>\n\t\t</Stack>\n\t);\n}"
     },
-    "code2":{
-        "collapse":"<Button variant='contained'>Contained</Button>\n<Button variant='contained' disabled>\n\tDisabled\n</Button>\n<Button variant='contained' href='#contained-buttons'>\n\tLink\n</Button>",
-        "expandjs":"<Button variant='text'>Text</Button>\n<Button variant='contained'>Contained</Button>\n<Button variant='outlined'>Outlined</Button>",
-        "expandts":"import * as React from 'react';\nimport Stack from '@mui/material/Stack';\nimport Button from '@mui/material/Button';\n\nexport default function BasicButtons() {\n\treturn (\n\t\t<Stack spacing={2} direction='row'>\n\t\t\t<Button variant='text'>Text</Button>\n\t\t\t<Button variant='contained'>Contained</Button>\n\t\t\t<Button variant='outlined'>Outlined</Button>\n\t\t</Stack>\n\t);\n}"
+    "code2": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     },
-    "code3":{
-        "collapse":"",
-        "expandjs":"",
-        "expandts":""
+    "code3": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     },
-    "code4":{
-        "collapse":"",
-        "expandjs":"",
-        "expandts":""
+    "code4": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     },
-    "code5":{
-        "collapse":"",
-        "expandjs":"",
-        "expandts":""
+    "code5": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     },
-    "code6":{
-        "collapse":"",
-        "expandjs":"",
-        "expandts":""
+    "code6": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     },
-    "code7":{
-        "collapse":"",
-        "expandjs":"",
-        "expandts":""
+    "code7": {
+        "collapse": "",
+        "expandjs": "",
+        "expandts": ""
     }
 }

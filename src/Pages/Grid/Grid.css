@@ -1,0 +1,14 @@
+@media (min-width: 1025px) {
+    .Grid {
+        width: calc(100% - 300px);
+        padding: 40px 100px 0px;
+    }
+
+    html[dir="ltr"] .Grid {
+        margin-left: auto;
+    }
+    
+    html[dir="rtl"] .Grid {
+        margin-right: auto;
+    }
+}
