@@ -122,10 +122,10 @@ const Button = () => {
                                         <a href='https://github.com/8ahmedmohamed/Coject-Documentation'>View the source on GitHub</a>
                                     </li>
                                     <li>
-                                        <button className='p-0'>Copy link to JavaScript source</button>
+                                        <button className='p-0' onClick={() => { copyDivToClipboard('code1'); setToastMessage(true) }}>Copy link to JavaScript source</button>
                                     </li>
                                     <li>
-                                        <button className='p-0'>Copy link to TypeScript source</button>
+                                        <button className='p-0' onClick={() => { copyDivToClipboard('code1'); setToastMessage(true) }}>Copy link to TypeScript source</button>
                                     </li>
                                 </ul>
                             </div>
