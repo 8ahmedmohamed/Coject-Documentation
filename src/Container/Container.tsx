@@ -4,6 +4,8 @@ import Sidebar from '../Components/Sidebar/Sidebar';
 import Navbar from '../Components/Navbar/Navbar';
 import ScrollToTop from "react-scroll-to-top";
 
+import { Box } from '@mui/material';
+
 // React Router
 import { Outlet } from "react-router-dom";
 
@@ -16,10 +18,10 @@ const Container = () => {
     return (
         <React.Fragment>
             <Navbar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} setDirection={setDirection} />
-            <div className="d-flex" style={{ marginTop: '62px' }}>
+            <Box className="d-flex" style={{ marginTop: '62px' }}>
                 <Sidebar toggleSideMenu={toggleSideMenu} setToggleSideMenu={setToggleSideMenu} direction={direction} />
                 <Outlet/>
-            </div>
+            </Box>
             <ScrollToTop smooth className={`scrollToTop ${direction === 'left' ? '' : 'dirRight'}`} component={<i className="bi bi-caret-up-fill" />} />
         </React.Fragment>
     )

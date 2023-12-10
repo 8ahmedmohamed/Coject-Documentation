@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
 
+import { Box, List, ListItem } from '@mui/material';
+
 import coject from '../../assets/favicon.ico'
 
 import StaticData from '../../Services/StaticData/StaticData.json';
@@ -71,7 +73,7 @@ const Navbar = (props: Props) => {
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const items = StaticData.filter((data) => {
@@ -82,15 +84,15 @@ const Navbar = (props: Props) => {
         }
     }).map((data, index) => {
         return (
-            <div key={index}>
-                <ul>
-                    <li>
-                        <span style={{ paddingRight: '10px' }}>{data.name}</span>
-                        <span style={{ paddingRight: '10px' }}>{data.age}</span>
-                        <span style={{ paddingRight: '10px' }}>{data.country}</span>
-                    </li>
-                </ul>
-            </div>
+            <Box key={index}>
+                <List>
+                    <ListItem>
+                        <Box component='span' sx={{ paddingRight: '10px' }}>{data.name}</Box>
+                        <Box component='span' sx={{ paddingRight: '10px' }}>{data.age}</Box>
+                        <Box component='span' sx={{ paddingRight: '10px' }}>{data.country}</Box>
+                    </ListItem>
+                </List>
+            </Box>
         )
     })
 
@@ -100,183 +102,183 @@ const Navbar = (props: Props) => {
 
     return (
         <React.Fragment>
-            <div className={`Navbar ${localStorage.getItem('LANG') === 'en' ? 'dirLeft' : 'dirRight'}`}>
+            <Box className={`Navbar ${localStorage.getItem('LANG') === 'en' ? 'dirLeft' : 'dirRight'}`}>
                 <nav className="navbar navbar-expand-sm">
-                    <div className="container-fluid">
-                        <div className='d-flex'>
-                            <div className="burgerMenu">
+                    <Box className="container-fluid">
+                        <Box className='d-flex'>
+                            <Box className="burgerMenu">
                                 <button className="navButtons" type="button" onClick={() => { props.setToggleSideMenu(!props.toggleSideMenu) }}>
                                     <i className="bi bi-list"></i>
                                 </button>
-                            </div>
-                            <div className="logo">
+                            </Box>
+                            <Box className="logo">
                                 <img src={coject} alt="Coject" />
-                            </div>
-                            <div className="versions">
-                                <p>Coject Documention</p>
-                                <div className="d-flex">
-                                    <div className='dropdown'>
+                            </Box>
+                            <Box className="versions">
+                                <Box component='p' className='navTitle'>Coject Documention</Box>
+                                <Box className="d-flex">
+                                    <Box className='dropdown'>
                                         <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Material UI
                                             <i className="bi bi-caret-down-fill"></i>
                                         </button>
-                                        <ul className="dropdown-menu">
-                                            <li>
-                                                <h5>Title 1</h5>
-                                                <p>
+                                        <List className="dropdown-menu">
+                                            <ListItem>
+                                                <h6>Title 1</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
+                                                </Box>
+                                            </ListItem>
                                             <hr />
-                                            <li>
-                                                <h5>Title 2</h5>
-                                                <p>
+                                            <ListItem>
+                                                <h6>Title 2</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
+                                                </Box>
+                                            </ListItem>
                                             <hr />
-                                            <li>
-                                                <h5>Title 3</h5>
-                                                <p>
+                                            <ListItem>
+                                                <h6>Title 3</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className='dropdown'>
+                                                </Box>
+                                            </ListItem>
+                                        </List>
+                                    </Box>
+                                    <Box className='dropdown'>
                                         <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             v5.14.18
                                             <i className="bi bi-caret-down-fill"></i>
                                         </button>
-                                        <ul className="dropdown-menu">
-                                            <li>
-                                                <h5>Title 1</h5>
-                                                <p>
+                                        <List className="dropdown-menu">
+                                            <ListItem>
+                                                <h6>Title 1</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
+                                                </Box>
+                                            </ListItem>
                                             <hr />
-                                            <li>
-                                                <h5>Title 2</h5>
-                                                <p>
+                                            <ListItem>
+                                                <h6>Title 2</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
+                                                </Box>
+                                            </ListItem>
                                             <hr />
-                                            <li>
-                                                <h5>Title 3</h5>
-                                                <p>
+                                            <ListItem>
+                                                <h6>Title 3</h6>
+                                                <Box component='p' className='dropdown-menu-content'>
                                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="navOptions">
-                            <div className='lang mx-2' onClick={LanguageHandling}>
-                                <div><i className="bi bi-translate"></i></div>
-                                <div>{localStorage.getItem('LANG') === 'en' ? 'English' : 'Arabic'}</div>
-                            </div>
+                                                </Box>
+                                            </ListItem>
+                                        </List>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>
+                        <Box className="navOptions">
+                            <Box className='lang mx-2' onClick={LanguageHandling}>
+                                <i className="bi bi-translate"></i>
+                                <Box component='p' className='mb-0'>{localStorage.getItem('LANG') === 'en' ? 'English' : 'Arabic'}</Box>
+                            </Box>
                             <form className="d-flex">
                                 <button className="navbarSearch mx-2" type='button' data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <div><i className="bi bi-search"></i></div>
-                                    <div className='searchPlaceHolder'><span>{t("Search")}...</span></div>
-                                    <div className='searchKey'><span>Ctrl+K</span></div>
+                                    <Box><i className="bi bi-search"></i></Box>
+                                    <Box className='searchPlaceHolder'><Box component='span'>{t("Search")}...</Box></Box>
+                                    <Box className='searchKey'><Box component='span'>Ctrl+K</Box></Box>
                                 </button>
                             </form>
-                            <div className='navIcons'>
+                            <Box className='navIcons'>
                                 <a className="navButtons" href='https://github.com/8ahmedmohamed/Coject-Documentation'>
                                     <i className="bi bi-github"></i>
                                 </a>
-                                <div className='dropdown'>
+                                <Box className='dropdown'>
                                     <button className="navButtons dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i className="bi bi-bell"></i>
                                     </button>
-                                    <ul className="dropdown-menu">
-                                        <li>
-                                            <h5>Title 1</h5>
-                                            <p>
+                                    <List className="dropdown-menu">
+                                        <ListItem>
+                                            <h6>Title 1</h6>
+                                            <Box component='p' className='dropdown-menu-content'>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                            </p>
-                                        </li>
+                                            </Box>
+                                        </ListItem>
                                         <hr />
-                                        <li>
-                                            <h5>Title 2</h5>
-                                            <p>
+                                        <ListItem>
+                                            <h6>Title 2</h6>
+                                            <Box component='p' className='dropdown-menu-content'>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                            </p>
-                                        </li>
+                                            </Box>
+                                        </ListItem>
                                         <hr />
-                                        <li>
-                                            <h5>Title 3</h5>
-                                            <p>
+                                        <ListItem>
+                                            <h6>Title 3</h6>
+                                            <Box component='p' className='dropdown-menu-content'>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            </Box>
+                                        </ListItem>
+                                    </List>
+                                </Box>
                                 <button className="navButtons" type="button" onClick={() => { setShowSidebar(!showSidebar); }}>
                                     <i className="bi bi-gear"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
+                            </Box>
+                        </Box>
+                    </Box>
                 </nav>
-                <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ display: 'none' }}>
-                    <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <div><i className="bi bi-search"></i></div>
+                <Box className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ display: 'none' }}>
+                    <Box className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <Box className="modal-content">
+                            <Box className="modal-header">
+                                <Box><i className="bi bi-search"></i></Box>
                                 <input type="search" placeholder='Search...' autoFocus onChange={(e) => { SearchFilter(e) }} />
                                 <button className="navButtons btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
+                            </Box>
+                            <Box className="modal-body">
                                 {items}
-                            </div>
-                            <div className="modal-footer">
-                                <div className="search"><span>Search by</span></div>
-                                <div className="cojectLogo"><img src={coject} alt="Coject" /></div>
-                                <div className="cojectSlogan"><span>Coject</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </Box>
+                            <Box className="modal-footer">
+                                <Box className="search"><Box component='span'>Search by</Box></Box>
+                                <Box className="cojectLogo"><img src={coject} alt="Coject" /></Box>
+                                <Box className="cojectSlogan"><Box component='span'>Coject</Box></Box>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
                 <aside className={`${showSidebar ? 'showSidebarContainer' : ''}`} onClick={() => { setShowSidebar(!showSidebar); }} />
-                <div className={`sidebar ${showSidebar ? 'showSidebar' : ''}`}>
-                    <div className="sideInner">
-                        <div className="settings">
-                            <div><span>Settings</span></div>
+                <Box className={`sidebar ${showSidebar ? 'showSidebar' : ''}`}>
+                    <Box className="sideInner">
+                        <Box className="settings">
+                            <Box><Box component='span'>Settings</Box></Box>
                             <button className="navButtons" type="button" onClick={() => { setShowSidebar(!showSidebar); }}>
                                 <i className="bi bi-x-lg"></i>
                             </button>
-                        </div>
-                        <div className="content">
+                        </Box>
+                        <Box className="content">
                             <h6>DIRECTION</h6>
-                            <div className="direction">
+                            <Box className="direction">
                                 <button className={`navButtons ${localStorage.getItem('LANG') === 'en' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('left') }}>
                                     <i className="bi bi-arrow-return-right"></i>
-                                    <span>{t('Left to Right')}</span>
+                                    <Box component='span'>{t('Left to Right')}</Box>
                                 </button>
                                 <button className={`navButtons ${localStorage.getItem('LANG') === 'ar' ? 'selected' : 'notSelected'}`} type="button" onClick={() => { ChangeDirection('right') }}>
                                     <i className="bi bi-arrow-return-left"></i>
-                                    <span>{t('Right to Left')}</span>
+                                    <Box component='span'>{t('Right to Left')}</Box>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
         </React.Fragment>
     )
 }

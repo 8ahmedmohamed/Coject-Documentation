@@ -23,7 +23,7 @@ button {
     width: 30px;
 }
 
-.Navbar .versions>p {
+.Navbar .versions .navTitle {
     color: #6B7A90;
     margin-left: 8px;
     margin-bottom: 0;
@@ -71,6 +71,7 @@ button {
 
 .Navbar .lang {
     display: flex;
+    align-items: center;
     gap: 5px;
     cursor: pointer;
 }
@@ -90,11 +91,22 @@ button {
     border-color: rgb(199, 208, 221);
 }
 
+.Navbar .searchPlaceHolder {
+    color: rgb(67, 77, 91);
+}
+
 .Navbar .searchKey {
     background-color: white;
     border: 1px solid rgb(218, 226, 237);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 0px 5px;
+}
+
+.Navbar .searchKey span {
+    display: block;
+    padding: 2px 0;
+    font-size: 0.7rem;
+    font-weight: 500;
 }
 
 .Navbar .navIcons {
@@ -127,6 +139,7 @@ button {
     width: 300px;
     padding: 8px 0px;
     border-radius: 12px;
+    position: absolute;
     overflow-y: auto;
     opacity: 0;
     z-index: -5;
@@ -166,6 +179,10 @@ button {
     padding: 8px 16px;
 }
 
+.Navbar .dropdown-menu li .dropdown-menu-content {
+    font-size: 0.85rem;
+}
+
 .Navbar .dropdown-menu hr {
     margin: 2px;
 }
@@ -176,7 +193,7 @@ button {
 
 .Navbar .bi::before {
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .Navbar .modal {
@@ -231,6 +248,17 @@ button {
     letter-spacing: 0.08rem;
     font-weight: 600;
     color: rgb(67, 77, 91);
+}
+
+.Navbar .modal .modal-body .MuiList-root {
+    list-style: disc;
+    margin: 0 0 1rem;
+    padding: 0 0 0 2rem;
+}
+
+.Navbar .MuiListItem-root {
+    display: list-item;
+    padding: 0;
 }
 
 .Navbar .modal .modal-footer .search {
@@ -334,7 +362,6 @@ button {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     background-color: rgba(0, 127, 255, 0.08);
-    ;
 }
 
 .Navbar .sidebar .direction .navButtons.selected:hover {
@@ -373,6 +400,15 @@ button {
     .Navbar .sidebar .sideInner {
         width: 300px;
     }
+
+    .Navbar .sidebar .direction .navButtons {
+        padding: 10px;
+    }
+
+    .Navbar .sidebar .direction .navButtons,
+    .Navbar .sidebar .direction .navButtons .bi::before {
+        font-size: 0.8rem;
+    }
 }
 
 @media (min-width: 1025px) {
@@ -393,9 +429,13 @@ button {
     }
 
     .Navbar .versions,
-    .Navbar .searchPlaceHolder,
-    .Navbar .searchKey {
+    .Navbar .searchPlaceHolder {
         display: block;
+    }
+
+    .Navbar .searchKey {
+        display: flex;
+        align-items: center;
     }
 
     .Navbar .navbarSearch {

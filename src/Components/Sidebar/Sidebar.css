@@ -2,8 +2,17 @@ button:focus-visible {
     outline: none;
 }
 
+.Sidemenu .MuiList-root {
+    margin: 0 0 1rem;
+}
+
+.Sidemenu .MuiListItem-root {
+    display: list-item;
+    padding: 0;
+}
+
 .Sidemenu .sideInner {
-    width: 300px;
+    width: 260px;
     padding: 5px 0px 40px;
 }
 
