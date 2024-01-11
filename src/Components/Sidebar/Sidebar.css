@@ -89,7 +89,7 @@ button:focus-visible {
 }
 
 .Sidemenu .versions .dropdown-menu {
-    display: block;
+    /* display: block; */
     visibility: hidden;
     width: 200px;
     padding: 8px 0px;

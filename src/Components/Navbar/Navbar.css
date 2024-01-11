@@ -201,9 +201,9 @@ button {
     backdrop-filter: blur(2px) brightness(200%);
 }
 
-.Navbar .modal.show {
+/* .Navbar .modal.show {
     display: block !important;
-}
+} */
 
 .Navbar .modal .modal-content {
     border: none;
@@ -219,12 +219,12 @@ button {
     outline: none;
 }
 
-.Navbar .modal input[type="search"]::-webkit-search-decoration,
+/* .Navbar .modal input[type="search"]::-webkit-search-decoration,
 .Navbar .modal input[type="search"]::-webkit-search-cancel-button,
 .Navbar .modal input[type="search"]::-webkit-search-results-button,
 .Navbar .modal input[type="search"]::-webkit-search-results-decoration {
     display: none;
-}
+} */
 
 .Navbar .modal .btn-close {
     display: flex;
@@ -235,7 +235,7 @@ button {
     border: 1px solid rgb(199, 208, 221);
     padding: 2px 7px !important;
     opacity: 1;
-    --bs-btn-close-bg: none;
+    /* --bs-btn-close-bg: none; */
 }
 
 .Navbar .modal .btn-close:focus {
